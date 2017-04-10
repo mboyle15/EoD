@@ -56,8 +56,20 @@ namespace EngineeringOnDisplay2017.Controllers
 {
     public class SensorController : Controller
     {
-        // GET: /<controller>/
         public IActionResult ElectricalUsage()
+        {
+            return View();
+        }
+
+        public IActionResult WaterUsage()
+        {
+            return View();
+        }
+        public IActionResult NatGasUsage()
+        {
+            return View();
+        }
+        public IActionResult OutsideTemperature()
         {
             return View();
         }
