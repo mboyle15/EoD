@@ -17,7 +17,7 @@
  * Class:  CSCE 470 Capstone  Spring 2017
  * College: University of Alaska, Anchorage
  * ***********************************************************************************************************************
- * File: Sensors.cs
+ * File: SensorRecord.cs
  * Purpose: Define the sensor data to store in the database.  This class will be the primary model used in the website.
  * 
  * *******************************************************************************************************************/
@@ -34,7 +34,7 @@ namespace EngineeringOnDisplay2017.Models
     /**
      * Define the sensor data to store in the database.  This class will be the primary model used in the website.
      */
-    public class Sensors
+    public class SensorRecord
     {
         public int SenorDataId { get; set; }  //primary key for this record //should be every 15minutes to 1 hour.
         public float EletricalUsage { get; set; } //eletrical usage in kWh.  Need to see what is the timeframe for this.
