@@ -42,9 +42,9 @@ namespace EngineeringOnDisplay2017.Models
         }
         
         //list of building records in database
-        public DbSet<Building> Buildings { get; set; }
+        public DbSet<BuildingRecord> BuildingRecords { get; set; }
 
         //list of sensor records in database
-        public DbSet<SensorRecord> SensorRecords { get; set; }
+        public DbSet<ElectricalRecord> EletricalRecords { get; set; }
     }
 } 

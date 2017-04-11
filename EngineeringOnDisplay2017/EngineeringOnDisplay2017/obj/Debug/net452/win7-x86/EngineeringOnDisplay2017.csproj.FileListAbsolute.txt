@@ -316,3 +316,9 @@ C:\Users\thore\Documents\Visual Studio 2017\Projects\EoD\EngineeringOnDisplay201
 C:\Users\thore\Documents\Visual Studio 2017\Projects\EoD\EngineeringOnDisplay2017\EngineeringOnDisplay2017\bin\Debug\net452\win7-x86\Microsoft.EntityFrameworkCore.Design.dll
 C:\Users\thore\Documents\Visual Studio 2017\Projects\EoD\EngineeringOnDisplay2017\EngineeringOnDisplay2017\bin\Debug\net452\win7-x86\Microsoft.EntityFrameworkCore.Relational.dll
 C:\Users\thore\Documents\Visual Studio 2017\Projects\EoD\EngineeringOnDisplay2017\EngineeringOnDisplay2017\bin\Debug\net452\win7-x86\Microsoft.EntityFrameworkCore.Relational.Design.dll
+C:\Users\Terrance Mount\Documents\Visual Studio 2017\Projects\EoD\EngineeringOnDisplay2017\EngineeringOnDisplay2017\bin\Debug\net452\win7-x86\Microsoft.EntityFrameworkCore.dll
+C:\Users\Terrance Mount\Documents\Visual Studio 2017\Projects\EoD\EngineeringOnDisplay2017\EngineeringOnDisplay2017\bin\Debug\net452\win7-x86\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\Terrance Mount\Documents\Visual Studio 2017\Projects\EoD\EngineeringOnDisplay2017\EngineeringOnDisplay2017\bin\Debug\net452\win7-x86\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\Terrance Mount\Documents\Visual Studio 2017\Projects\EoD\EngineeringOnDisplay2017\EngineeringOnDisplay2017\bin\Debug\net452\win7-x86\Microsoft.EntityFrameworkCore.Relational.Design.dll
+C:\Users\Terrance Mount\Documents\Visual Studio 2017\Projects\EoD\EngineeringOnDisplay2017\EngineeringOnDisplay2017\bin\Debug\net452\win7-x86\Remotion.Linq.dll
+C:\Users\Terrance Mount\Documents\Visual Studio 2017\Projects\EoD\EngineeringOnDisplay2017\EngineeringOnDisplay2017\bin\Debug\net452\win7-x86\System.Interactive.Async.dll

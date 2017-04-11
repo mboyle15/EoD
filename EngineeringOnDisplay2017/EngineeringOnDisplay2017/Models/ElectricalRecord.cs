@@ -17,8 +17,8 @@
  * Class:  CSCE 470 Capstone  Spring 2017
  * College: University of Alaska, Anchorage
  * ***********************************************************************************************************************
- * File: Building.cs
- * Purpose: 
+ * File: SensorRecord.cs
+ * Purpose: Model for the electrical sensor in buildings
  * 
  * *******************************************************************************************************************/
 using System;
@@ -27,15 +27,16 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace EngineeringOnDisplay2017.Models
-{
-    public class Building
+{   
+    /**
+     * Model for storing a record (row in table) of eletrical sensor data.
+     * Puedo-code: Properties for primary key, eletrical useage, demand and building id foreign key.    
+     */
+    public class ElectricalRecord
     {
-        public int BuildingId { get; set; }
-        public string Name { get; set; }
-        public string AddressLineOne { get; set; }
-        public string AddressLineTwo { get; set; }
-        public string City { get; set; }
-        public string State { get; set; }
-        public string Zip { get; set; }
+        public uint RecordId { get; set; }  //primary key for record
+        public float Usage { get; set; }  //usage in kilowatthours  (don't know when this number gets reset to zero)
+        public float Demand { get; set; }   //demand in kilowatts 
+        public byte BuildingId { get; set; }  //foriegn key for the record's building 
     }
 }

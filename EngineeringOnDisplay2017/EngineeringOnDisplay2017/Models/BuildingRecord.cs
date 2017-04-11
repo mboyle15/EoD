@@ -17,12 +17,10 @@
  * Class:  CSCE 470 Capstone  Spring 2017
  * College: University of Alaska, Anchorage
  * ***********************************************************************************************************************
- * File: SensorRecord.cs
- * Purpose: Define the sensor data to store in the database.  This class will be the primary model used in the website.
+ * File: BuildingRecord.cs
+ * Purpose: 
  * 
  * *******************************************************************************************************************/
-
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,15 +30,18 @@ namespace EngineeringOnDisplay2017.Models
 {
 
     /**
-     * Define the sensor data to store in the database.  This class will be the primary model used in the website.
-     */
-    public class SensorRecord
+    * Model for storing a record (row in table) of building name and address.
+    * Puedo-code: Properties for primary key with name and address.    
+    */
+    public class BuildingRecord
     {
-        public int SenorDataId { get; set; }  //primary key for this record //should be every 15minutes to 1 hour.
-        public float EletricalUsage { get; set; } //eletrical usage in kWh.  Need to see what is the timeframe for this.
-        public float WaterUsage { get; set; } //water usage in gallons.
-        public float NaturalGasUsage { get; set; }  //Natural gas usage
-        public float OutsideTemperature { get; set; } //outside temperature 
-        public int BuildingId { get; set; } //foreign key for the building id incase there is more then one building records
+        public byte RecordId { get; set; }  //primary key, used unsigned byte because assuming to have less then 255 building in database
+        public string Name { get; set; } //name of building  like Engineering and Industry Building
+        public string ShortName { get; set; }  //short name like EIB
+        public string AddressLineOne { get; set; } //first line of address
+        public string AddressLineTwo { get; set; } //second line of address, will not display if null
+        public string City { get; set; }
+        public string State { get; set; }
+        public string Zip { get; set; }
     }
 }
