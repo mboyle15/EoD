@@ -17,10 +17,12 @@
  * Class:  CSCE 470 Capstone  Spring 2017
  * College: University of Alaska, Anchorage
  * ***********************************************************************************************************************
- * File: Sensors.cs
- * Purpose: Define the sensor data to store in the database.  This class will be the primary model used in the website.
+ * File: Building.cs
+ * Purpose: 
  * 
  * *******************************************************************************************************************/
+
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,7 +30,21 @@ using System.Threading.Tasks;
 
 namespace EngineeringOnDisplay2017.Models
 {
-    public class Buildings
+
+    /**
+     * Allows for loose connection with services in all aspects of MVC
+     */
+    public class AppDbContext : DbContext
     {
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
+        {
+
+        }
+        
+        //list of building records in database
+        public DbSet<Building> Buildings { get; set; }
+
+        //list of sensor records in database
+        public DbSet<SensorRecord> SensorRecords { get; set; }
     }
-}
+} 

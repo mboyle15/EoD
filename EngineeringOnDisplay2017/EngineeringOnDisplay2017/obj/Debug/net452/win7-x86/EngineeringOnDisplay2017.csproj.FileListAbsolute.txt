@@ -310,3 +310,9 @@ C:\Users\thore\Documents\Visual Studio 2017\Projects\EoD\EngineeringOnDisplay201
 C:\Users\thore\Documents\Visual Studio 2017\Projects\EoD\EngineeringOnDisplay2017\EngineeringOnDisplay2017\obj\Debug\net452\win7-x86\EngineeringOnDisplay2017.AssemblyInfo.cs
 C:\Users\thore\Documents\Visual Studio 2017\Projects\EoD\EngineeringOnDisplay2017\EngineeringOnDisplay2017\obj\Debug\net452\win7-x86\EngineeringOnDisplay2017.exe
 C:\Users\thore\Documents\Visual Studio 2017\Projects\EoD\EngineeringOnDisplay2017\EngineeringOnDisplay2017\obj\Debug\net452\win7-x86\EngineeringOnDisplay2017.pdb
+C:\Users\thore\Documents\Visual Studio 2017\Projects\EoD\EngineeringOnDisplay2017\EngineeringOnDisplay2017\bin\Debug\net452\win7-x86\Microsoft.EntityFrameworkCore.dll
+C:\Users\thore\Documents\Visual Studio 2017\Projects\EoD\EngineeringOnDisplay2017\EngineeringOnDisplay2017\bin\Debug\net452\win7-x86\Remotion.Linq.dll
+C:\Users\thore\Documents\Visual Studio 2017\Projects\EoD\EngineeringOnDisplay2017\EngineeringOnDisplay2017\bin\Debug\net452\win7-x86\System.Interactive.Async.dll
+C:\Users\thore\Documents\Visual Studio 2017\Projects\EoD\EngineeringOnDisplay2017\EngineeringOnDisplay2017\bin\Debug\net452\win7-x86\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\thore\Documents\Visual Studio 2017\Projects\EoD\EngineeringOnDisplay2017\EngineeringOnDisplay2017\bin\Debug\net452\win7-x86\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\thore\Documents\Visual Studio 2017\Projects\EoD\EngineeringOnDisplay2017\EngineeringOnDisplay2017\bin\Debug\net452\win7-x86\Microsoft.EntityFrameworkCore.Relational.Design.dll
