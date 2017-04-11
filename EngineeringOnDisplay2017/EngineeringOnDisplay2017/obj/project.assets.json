@@ -7209,15 +7209,15 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Terrance Mount\\.nuget\\packages\\": {}
+    "C:\\Users\\thore\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Terrance Mount\\Documents\\Visual Studio 2017\\Projects\\EoD\\EngineeringOnDisplay2017\\EngineeringOnDisplay2017\\EngineeringOnDisplay2017.csproj",
+      "projectUniqueName": "C:\\Users\\thore\\Documents\\Visual Studio 2017\\Projects\\EoD\\EngineeringOnDisplay2017\\EngineeringOnDisplay2017\\EngineeringOnDisplay2017.csproj",
       "projectName": "EngineeringOnDisplay2017",
-      "projectPath": "C:\\Users\\Terrance Mount\\Documents\\Visual Studio 2017\\Projects\\EoD\\EngineeringOnDisplay2017\\EngineeringOnDisplay2017\\EngineeringOnDisplay2017.csproj",
-      "outputPath": "C:\\Users\\Terrance Mount\\Documents\\Visual Studio 2017\\Projects\\EoD\\EngineeringOnDisplay2017\\EngineeringOnDisplay2017\\obj\\",
+      "projectPath": "C:\\Users\\thore\\Documents\\Visual Studio 2017\\Projects\\EoD\\EngineeringOnDisplay2017\\EngineeringOnDisplay2017\\EngineeringOnDisplay2017.csproj",
+      "outputPath": "C:\\Users\\thore\\Documents\\Visual Studio 2017\\Projects\\EoD\\EngineeringOnDisplay2017\\EngineeringOnDisplay2017\\obj\\",
       "projectStyle": "PackageReference",
       "originalTargetFrameworks": [
         "net452"
