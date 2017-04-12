@@ -8,8 +8,8 @@ using EngineeringOnDisplay2017.Models;
 namespace EngineeringOnDisplay2017.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20170412192156_ChangedBuildingRecord")]
-    partial class ChangedBuildingRecord
+    [Migration("20170412211913_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

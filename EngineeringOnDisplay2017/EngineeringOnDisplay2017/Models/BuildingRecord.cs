@@ -28,10 +28,8 @@
  *          Many strings for address, city, state and zip
  * 
  * *******************************************************************************************************************/
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EngineeringOnDisplay2017.Models
 {
@@ -41,13 +39,21 @@ namespace EngineeringOnDisplay2017.Models
     */
     public class BuildingRecord
     {
+        [Column(Order = 1)]
         public int BuildingRecordId { get; set; }  //primary key, used unsigned byte because assuming to have less then 255 building in database
+        [Column(Order = 2)]
         public string Name { get; set; } //name of building  like Engineering and Industry Building
+        [Column(Order = 3)]
         public string Acronym { get; set; }  //the acronym commonly used by UAA EIB
+        [Column(Order = 4)]
         public string AddressLineOne { get; set; } //first line of address
+        [Column(Order = 5)]
         public string AddressLineTwo { get; set; } //second line of address, will not display if null
+        [Column(Order = 6)]
         public string City { get; set; }
+        [Column(Order = 7)]
         public string State { get; set; }
+        [Column(Order = 8)]
         public string Zip { get; set; }
     }
 }

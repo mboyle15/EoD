@@ -30,6 +30,8 @@ namespace EngineeringOnDisplay2017
             services.AddMvc();
             services.AddDbContext<AppDbContext>(options =>
                                         options.UseSqlServer("Server = (localdb)\\MSSQLLocalDB; Database = EngrOnDispSpr2017; Trusted_Connection = True; MultipleActiveResultSets = true"));
+            services.AddTransient<IElectricalRepository, ElectricalRepository>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,6 +51,8 @@ namespace EngineeringOnDisplay2017
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            DbInitializer.Seed(app);
         }
     }
 }

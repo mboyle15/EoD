@@ -49,6 +49,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using EngineeringOnDisplay2017.Models;
+using EngineeringOnDisplay2017.ViewModels;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -56,9 +58,21 @@ namespace EngineeringOnDisplay2017.Controllers
 {
     public class SensorController : Controller
     {
+        private IElectricalRepository _eletricalRepository;
+
+        public SensorController(IElectricalRepository electricalRepository)
+        {
+            _eletricalRepository = electricalRepository;
+        }
+
+        //controller for the EletricalUsage View
         public IActionResult ElectricalUsage()
         {
-            return View();
+            //create an instace of the SensorViewModel that has all the models wrapped inside.
+            SensorViewModel sensorViewModel = new SensorViewModel();
+            sensorViewModel.ElectricalRecords = _eletricalRepository.GetElectricalRecords();
+
+            return View(sensorViewModel);
         }
 
         public IActionResult WaterUsage()

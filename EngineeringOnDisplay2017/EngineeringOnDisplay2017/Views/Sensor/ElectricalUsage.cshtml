@@ -1,10 +1,37 @@
 ﻿@{
     ViewBag.Title = "Electrical Usage";
 }
-
+@model SensorViewModel
 
 <h2>Electrical Usage</h2>
 <p>ToDo: Talk about more stuff on electricty sensors in EIB.  Talk about importance of electricy conservation.</p>
+
+
+
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Demand</th>
+        <th>Usage</th>
+        <th>Time Recorded</th>
+        <th>Building Acronym</th>
+    </tr>
+
+@foreach (var record in Model.ElectricalRecords)
+{
+    <tr>
+        <td>@record.ElectricalRecordId</td>
+        <td>@record.Demand kW</td>
+        <td>@record.Usage kWh</td>
+        <td>@record.RecordedDateTime</td>
+        <td>@record.BuildingRecord.Acronym</td>
+    </tr>
+
+}
+</table>
+
+
+
 
 <!--Load the AJAX API-->
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -26,18 +53,12 @@
         data.addColumn('string', '2016');
         data.addColumn('number', 'kWatts');
         data.addRows([
-          ['Jan', 3.0],
-          ['Feb', 3.2],
-          ['Mar', 2.8],
-          ['Apr', 2.7],
-          ['May', 1.8],
-          ['Jun', 1.2],
-          ['Jul', 1.1],
-          ['Aug', 1.3],
-          ['Sep', 2.1],
-          ['Oct', 2.4],
-          ['Nov', 2.7],
-          ['Dec', 2.9]
+
+            @foreach(var record in Model.ElectricalRecords)
+            {
+
+                @:["@record.RecordedDateTime.ToString("%h:%m tt")", @record.Demand],
+            }
         ]);
 
         // Set chart options
@@ -58,8 +79,6 @@
             <button class="btn btn-success btn-lg"><i class="fa fa-angle-left"></i></button>
         </div>
         <div class="col-xs-10">
-            <!--Div that will hold the pie chart-->
-           <!--<div id="chart_div" />-->
         </div>
         <div class="col-xs-1">
             <button class="btn btn-success btn-lg"><i class="fa fa-angle-right"></i></button>

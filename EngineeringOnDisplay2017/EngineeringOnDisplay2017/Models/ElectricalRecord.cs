@@ -31,6 +31,7 @@
  * 
  * *******************************************************************************************************************/
 using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EngineeringOnDisplay2017.Models
 {
@@ -39,10 +40,19 @@ namespace EngineeringOnDisplay2017.Models
      */
     public class ElectricalRecord
     {
+        [Column(Order = 1)]
         public int ElectricalRecordId { get; set; }  //primary key for record
-        public DateTime RecordedDateTime { get; set; }  //when is this data recorded
+
+        [Column(Order = 2)]
         public float Usage { get; set; }  //usage in kilowatthours  (don't know when this number gets reset to zero)
+
+        [Column(Order = 3)]
         public float Demand { get; set; }   //demand in kilowatts 
+
+        [Column(Order = 4)]
+        public DateTime RecordedDateTime { get; set; }  //when is this data recorded
+
+        [Column(Order = 5)]
         public BuildingRecord BuildingRecord { get; set; } //a reference to the foriegn key (don't really understand how this works.
     }
 }
