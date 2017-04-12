@@ -41,9 +41,9 @@ namespace EngineeringOnDisplay2017.Models
     */
     public class BuildingRecord
     {
-        public int Id { get; set; }  //primary key, used unsigned byte because assuming to have less then 255 building in database
+        public int BuildingRecordId { get; set; }  //primary key, used unsigned byte because assuming to have less then 255 building in database
         public string Name { get; set; } //name of building  like Engineering and Industry Building
-        public string ShortName { get; set; }  //short name like EIB
+        public string Acronym { get; set; }  //the acronym commonly used by UAA EIB
         public string AddressLineOne { get; set; } //first line of address
         public string AddressLineTwo { get; set; } //second line of address, will not display if null
         public string City { get; set; }

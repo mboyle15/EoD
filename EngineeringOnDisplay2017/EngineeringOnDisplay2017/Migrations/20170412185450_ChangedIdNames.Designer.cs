@@ -8,9 +8,10 @@ using EngineeringOnDisplay2017.Models;
 namespace EngineeringOnDisplay2017.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170412185450_ChangedIdNames")]
+    partial class ChangedIdNames
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.1")
@@ -18,10 +19,8 @@ namespace EngineeringOnDisplay2017.Migrations
 
             modelBuilder.Entity("EngineeringOnDisplay2017.Models.BuildingRecord", b =>
                 {
-                    b.Property<int>("BuildingRecordId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Acronym");
 
                     b.Property<string>("AddressLineOne");
 
@@ -31,11 +30,13 @@ namespace EngineeringOnDisplay2017.Migrations
 
                     b.Property<string>("Name");
 
+                    b.Property<string>("ShortName");
+
                     b.Property<string>("State");
 
                     b.Property<string>("Zip");
 
-                    b.HasKey("BuildingRecordId");
+                    b.HasKey("Id");
 
                     b.ToTable("BuildingRecords");
                 });

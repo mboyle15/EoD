@@ -8,9 +8,10 @@ using EngineeringOnDisplay2017.Models;
 namespace EngineeringOnDisplay2017.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170412192156_ChangedBuildingRecord")]
+    partial class ChangedBuildingRecord
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.1")

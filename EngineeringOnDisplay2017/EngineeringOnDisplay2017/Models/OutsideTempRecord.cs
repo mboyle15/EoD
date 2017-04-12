@@ -7,7 +7,7 @@ namespace EngineeringOnDisplay2017.Models
 {
     public class OutsideTempRecord
     {
-        public int Id { get; set; } //primary key for record
+        public int OutsideTempRecordId { get; set; } //primary key for record
         public DateTime RecordedDateTime { get; set; }  //time record was created
         public float Temperature { get; set; } //Temperature in degrees F
         //public int BuildingId { get; set; } //Foriegn key for the Building record Id

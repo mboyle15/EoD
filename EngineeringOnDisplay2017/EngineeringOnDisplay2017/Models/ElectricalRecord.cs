@@ -39,7 +39,7 @@ namespace EngineeringOnDisplay2017.Models
      */
     public class ElectricalRecord
     {
-        public int Id { get; set; }  //primary key for record
+        public int ElectricalRecordId { get; set; }  //primary key for record
         public DateTime RecordedDateTime { get; set; }  //when is this data recorded
         public float Usage { get; set; }  //usage in kilowatthours  (don't know when this number gets reset to zero)
         public float Demand { get; set; }   //demand in kilowatts 

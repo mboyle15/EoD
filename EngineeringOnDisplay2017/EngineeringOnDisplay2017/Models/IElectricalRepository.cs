@@ -68,16 +68,13 @@ namespace EngineeringOnDisplay2017.Models
          */
         IEnumerable<ElectricalRecord> GetElectricalRecords(DateTime start, DateTime end);
 
-        /**
-         * Sets the CurrentBuilding to null so queries will not take the building into account.
-         */
-        void ClearBuilding();
+
 
         /**
           * Gets all records in ElectricalRecords table
           * @return  Collection of electrical records
           */
-        ElectricalRecord GetElectricalRecordById(int recordId);
+        ElectricalRecord GetElectricalRecordById(int eletricalRecordId);
         
     }
 }
