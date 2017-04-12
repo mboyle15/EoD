@@ -6,8 +6,6 @@
 <h2>Electrical Usage</h2>
 <p>ToDo: Talk about more stuff on electricty sensors in EIB.  Talk about importance of electricy conservation.</p>
 
-
-
 <table border="1">
     <tr>
         <th>ID</th>
@@ -26,12 +24,51 @@
         <td>@record.RecordedDateTime</td>
         <td>@record.BuildingRecord.Acronym</td>
     </tr>
-
 }
 </table>
 
 
+<!--
+<script type="text/javascript" src="~/lib/Chart-js/dist/Chart.min.js"></script>
 
+<div style="width:500px; height:500px;">
+<canvas id="myChart"></canvas>
+</div>
+<script>
+    var ctx = document.getElementById("myChart");
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            datasets: [{
+                label: 'kiloWatts',
+                data: [
+                @foreach (var record in Model.ElectricalRecords)
+                {
+                    @:@record.Demand,
+                }
+                ],
+                borderWidth: 1
+            }]
+        },
+        options:
+        {
+            scales:
+            {
+                yAxes:
+                [{
+                    ticks:
+                    {
+                        beginAtZero: true
+                    }
+                }]
+            },
+            responsive: true,
+            maintainAspectRatio: true
+        }
+    });
+</script>
+
+    -->
 
 <!--Load the AJAX API-->
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -72,7 +109,7 @@
         chart.draw(data, options);
     }
 </script>
-
+    
 <div class="row">
     <div class="container-fluid">
         <div class="col-xs-1">
@@ -112,3 +149,4 @@
         </div>
     </div>
 </div>
+    
