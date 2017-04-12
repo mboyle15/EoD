@@ -18,7 +18,14 @@
  * College: University of Alaska, Anchorage
  * ***********************************************************************************************************************
  * File: BuildingRecord.cs
- * Purpose: 
+ * Purpose: Keep the record of a single building (row in table)
+ * 
+ *  Puedo-Code:
+ *      Properties for:
+ *          Record id - primary key
+ *          Name of building
+ *          Acronym of building - most likely what the website will look up the building by.
+ *          Many strings for address, city, state and zip
  * 
  * *******************************************************************************************************************/
 using System;
@@ -30,12 +37,11 @@ namespace EngineeringOnDisplay2017.Models
 {
 
     /**
-    * Model for storing a record (row in table) of building name and address.
-    * Puedo-code: Properties for primary key with name and address.    
+    * Model for storing a record (row in table) of building name and address.    
     */
     public class BuildingRecord
     {
-        public byte RecordId { get; set; }  //primary key, used unsigned byte because assuming to have less then 255 building in database
+        public int Id { get; set; }  //primary key, used unsigned byte because assuming to have less then 255 building in database
         public string Name { get; set; } //name of building  like Engineering and Industry Building
         public string ShortName { get; set; }  //short name like EIB
         public string AddressLineOne { get; set; } //first line of address

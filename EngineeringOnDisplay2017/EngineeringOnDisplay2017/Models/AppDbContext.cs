@@ -23,10 +23,7 @@
  * *******************************************************************************************************************/
 
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+
 
 namespace EngineeringOnDisplay2017.Models
 {
@@ -46,5 +43,11 @@ namespace EngineeringOnDisplay2017.Models
 
         //list of sensor records in database
         public DbSet<ElectricalRecord> EletricalRecords { get; set; }
+
+        public DbSet<NaturalGasRecord> NaturalGasRecords { get; set; }
+
+        public DbSet<WaterRecord> WaterRecords { get; set; }
+
+        public DbSet<OutsideTempRecord> OutsideTempRecords { get; set; }
     }
 } 

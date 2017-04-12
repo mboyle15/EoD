@@ -322,3 +322,4 @@ C:\Users\Terrance Mount\Documents\Visual Studio 2017\Projects\EoD\EngineeringOnD
 C:\Users\Terrance Mount\Documents\Visual Studio 2017\Projects\EoD\EngineeringOnDisplay2017\EngineeringOnDisplay2017\bin\Debug\net452\win7-x86\Microsoft.EntityFrameworkCore.Relational.Design.dll
 C:\Users\Terrance Mount\Documents\Visual Studio 2017\Projects\EoD\EngineeringOnDisplay2017\EngineeringOnDisplay2017\bin\Debug\net452\win7-x86\Remotion.Linq.dll
 C:\Users\Terrance Mount\Documents\Visual Studio 2017\Projects\EoD\EngineeringOnDisplay2017\EngineeringOnDisplay2017\bin\Debug\net452\win7-x86\System.Interactive.Async.dll
+C:\Users\Terrance Mount\Documents\Visual Studio 2017\Projects\EoD\EngineeringOnDisplay2017\EngineeringOnDisplay2017\bin\Debug\net452\win7-x86\Microsoft.EntityFrameworkCore.SqlServer.dll

@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using EngineeringOnDisplay2017.Models;
+using Microsoft.EntityFrameworkCore;
+
 
 namespace EngineeringOnDisplay2017
 {
@@ -29,6 +28,8 @@ namespace EngineeringOnDisplay2017
         {
             // Add framework services.
             services.AddMvc();
+            services.AddDbContext<AppDbContext>(options =>
+                                        options.UseSqlServer("Server = (localdb)\\MSSQLLocalDB; Database = EngrOnDispSpr2017; Trusted_Connection = True; MultipleActiveResultSets = true"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
