@@ -17,18 +17,24 @@
  * Class:  CSCE 470 Capstone  Spring 2017
  * College: University of Alaska, Anchorage
  * ***********************************************************************************************************************
- * File: ElectricalRecord.cs
- * Purpose: Model for the electrical sensor in buildings
- * 
- * Puedo-Code:
- *      properties for:
+ * File: ElectricalRepository.cs
+ * Purpose: Interact with AppDbContext to retrieve and proccess Linq method like calls for SQL database.  
+ *          Needed to use depencency injection for controllers and views.  Must have a corrosponding Interface to allow
+ *          Controllers to access methods in this class.  
  *      
- *          Record Id - primary key
- *          Creation Time - the date and time this entry was created.  Most likely just the insertion date.  
- *          Usage - the kilowatthours in the csv file.  Looks like it will just continue to grow.  
- *          demand - the current power demand of the building in kilowatts
- *          Building Id - foriegn key for the building id tied to the record.
- * 
+ *Linq methods are how Enity Framework formats its SQL queries.  Note each of the method strings have to end with
+ *      ether .FirstOrDefault to get one row or .ToList to get a IEnumerable<> list of the rows.
+ *      
+ * Used Linq methods and purpose:     
+ *      .Where(lamda expression)  this modifies the return like a WHERE in SQL
+ *              -Example .Where(e => e.RecordedTime > DateTime.Now.AddMinutes(-60)) This will return all matching row 
+ *              where the recorded time is within the last hour.  
+ *              
+ *      .FirstOrDefault(lamda expression)  will return one instance of the tables model ie ElectricalRecord.cs
+ *              -example .FirstOrDefault(e => e.ElectricalRecordId == 1) will return a instance of ElectricalRecord with
+ *              Id equal to 1 if it exists.  
+ *              
+ *      .ToList() Return all matching rows in an IEnumerable<> list
  * *******************************************************************************************************************/
 
 using System;
@@ -37,6 +43,7 @@ using System.Linq;
 
 namespace EngineeringOnDisplay2017.Models
 {
+    //Handles Linq queries to database and returns results to controller
     public class ElectricalRepository : IElectricalRepository
     {
         //local copy of context passed in by dependency injection

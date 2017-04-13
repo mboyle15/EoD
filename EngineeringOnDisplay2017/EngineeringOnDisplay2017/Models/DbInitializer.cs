@@ -9,7 +9,6 @@ namespace EngineeringOnDisplay2017.Models
 {
     public class DbInitializer
     {
-
         public static void Seed(IApplicationBuilder applicationBuilder)
         {
             AppDbContext context = applicationBuilder.ApplicationServices.GetRequiredService<AppDbContext>();

@@ -17,13 +17,13 @@
  * Class:  CSCE 470 Capstone  Spring 2017
  * College: University of Alaska, Anchorage
  * ***********************************************************************************************************************
- * File: Building.cs
- * Purpose: 
+ * File: AppDbContext.cs
+ * Purpose: The glue between the models and the database.  Full of properties for every table in database which is mapped
+ *      to models.  Enity Framework needs this class to run Linq queries.  This Context class is essentcial to creating
+ *      package manager Migrations for database in the code first approach.  
  * 
  * *******************************************************************************************************************/
-
 using Microsoft.EntityFrameworkCore;
-
 
 namespace EngineeringOnDisplay2017.Models
 {
@@ -33,21 +33,22 @@ namespace EngineeringOnDisplay2017.Models
      */
     public class AppDbContext : DbContext
     {
-        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
-        {
+        //constructor needed to give superclass the options passed in from startup.cs  
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)  { }
 
-        }
-        
-        //list of building records in database
+        //db connection for the building records
         public DbSet<BuildingRecord> BuildingRecords { get; set; }
 
-        //list of sensor records in database
+        //db connection for the electrical records
         public DbSet<ElectricalRecord> EletricalRecords { get; set; }
 
+        //db connection for natural gas records
         public DbSet<NaturalGasRecord> NaturalGasRecords { get; set; }
 
+        //db connection for water records
         public DbSet<WaterRecord> WaterRecords { get; set; }
 
+        //db connection for outside temperature records
         public DbSet<OutsideTempRecord> OutsideTempRecords { get; set; }
     }
 } 

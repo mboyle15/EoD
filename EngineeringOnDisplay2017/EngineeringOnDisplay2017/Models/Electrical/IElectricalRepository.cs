@@ -18,37 +18,17 @@
  * College: University of Alaska, Anchorage
  * ***********************************************************************************************************************
  * File: IElectricalRepository.cs
- * Purpose: Interface for the exposed methods and properties to be used by the views.
- * 
- * Puedo-code:
- *      
- *      EletricalRecords - returns a list of Eletrical records without any help.
- *      
- *      Get Eletrical Records in TimeSpan - return a list of records inbetween a start and end TimeDate and with a buildingId
- *          **Example for 12 month graph.
- *              Start = DateTime.Now() - DateTime.AddMonth(-12)
- *              End = DateTime.Now()
- *              Building = buildingRecord obtianed through the building Repository.
- *      
- *      
- *      Get Building for Electrical Record - incase you need to know what is the building assocated with eletrical record
- *      
- *      
- *          
- * 
- * 
+ * Purpose: Interface for the exposed methods and properties to be used by the controllers and views.
+ *          Look at the corrosponding class that implements this interface for more details.  
  * *******************************************************************************************************************/
-
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using EngineeringOnDisplay2017.Models;
 
 namespace EngineeringOnDisplay2017.Models
 {
     public interface IElectricalRepository
     {
+        //Keep track of the current building and refrence it in all future queries as long as currentbuilding is valid. 
         BuildingRecord CurrentBuilding { get; set; }
 
         /**
@@ -57,7 +37,6 @@ namespace EngineeringOnDisplay2017.Models
          * @return  Collection of electrical records
          */
         IEnumerable<ElectricalRecord> GetElectricalRecords();
-
    
         /**
          * Gets electrical records between or equal to timeframe. If current building is set 
@@ -67,9 +46,7 @@ namespace EngineeringOnDisplay2017.Models
          * @return                  Collection of electrical records
          */
         IEnumerable<ElectricalRecord> GetElectricalRecords(DateTime start, DateTime end);
-
-
-
+        
         /**
           * Gets all records in ElectricalRecords table
           * @return  Collection of electrical records

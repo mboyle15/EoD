@@ -30,6 +30,8 @@
  * *******************************************************************************************************************/
 
 using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
+
 
 namespace EngineeringOnDisplay2017.Models
 {
@@ -39,21 +41,25 @@ namespace EngineeringOnDisplay2017.Models
     */
     public class BuildingRecord
     {
-        [Column(Order = 1)]
+        [Required]
         public int BuildingRecordId { get; set; }  //primary key, used unsigned byte because assuming to have less then 255 building in database
-        [Column(Order = 2)]
-        public string Name { get; set; } //name of building  like Engineering and Industry Building
-        [Column(Order = 3)]
+
+        [Required]
         public string Acronym { get; set; }  //the acronym commonly used by UAA EIB
-        [Column(Order = 4)]
+
+        public string Name { get; set; } //name of building  like Engineering and Industry Building
+
         public string AddressLineOne { get; set; } //first line of address
-        [Column(Order = 5)]
+
         public string AddressLineTwo { get; set; } //second line of address, will not display if null
-        [Column(Order = 6)]
-        public string City { get; set; }
-        [Column(Order = 7)]
-        public string State { get; set; }
-        [Column(Order = 8)]
+
+        public string City { get; set; } //City holder
+
+        [StringLength(2)]//musht be a two character abbriveation of state
+        public string State { get; set; } //State property
+
+        [MinLength(5)] //must be atleast a 5 character zip
+        [MaxLength(10)]//9 digit zip with a dash in between
         public string Zip { get; set; }
     }
 }

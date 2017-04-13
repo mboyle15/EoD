@@ -19,19 +19,9 @@
  * ***********************************************************************************************************************
  * File: ElectricalRecord.cs
  * Purpose: Model for the electrical sensor in buildings
- * 
- * Puedo-Code:
- *      properties for:
- *      
- *          Record Id - primary key
- *          Creation Time - the date and time this entry was created.  Most likely just the insertion date.  
- *          Usage - the kilowatthours in the csv file.  Looks like it will just continue to grow.  
- *          demand - the current power demand of the building in kilowatts
- *          Building Id - foriegn key for the building id tied to the record.
- * 
  * *******************************************************************************************************************/
 using System;
-using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
 namespace EngineeringOnDisplay2017.Models
 {
@@ -40,19 +30,16 @@ namespace EngineeringOnDisplay2017.Models
      */
     public class ElectricalRecord
     {
-        [Column(Order = 1)]
+        [Required]
         public int ElectricalRecordId { get; set; }  //primary key for record
 
-        [Column(Order = 2)]
-        public float Usage { get; set; }  //usage in kilowatthours  (don't know when this number gets reset to zero)
-
-        [Column(Order = 3)]
-        public float Demand { get; set; }   //demand in kilowatts 
-
-        [Column(Order = 4)]
+        [Required]
         public DateTime RecordedDateTime { get; set; }  //when is this data recorded
 
-        [Column(Order = 5)]
+        public float Usage { get; set; }  //usage in kilowatthours  (don't know when this number gets reset to zero)
+        
+        public float Demand { get; set; }   //demand in kilowatts 
+
         public BuildingRecord BuildingRecord { get; set; } //a reference to the foriegn key (don't really understand how this works.
     }
 }
