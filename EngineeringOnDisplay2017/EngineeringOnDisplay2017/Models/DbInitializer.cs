@@ -12,9 +12,10 @@ namespace EngineeringOnDisplay2017.Models
         public static void Seed(IApplicationBuilder applicationBuilder)
         {
             AppDbContext context = applicationBuilder.ApplicationServices.GetRequiredService<AppDbContext>();
-            BuildingRecord testBuilding =null;
+            BuildingRecord testBuilding = null;
 
-            if(!context.BuildingRecords.Any())
+
+            if (!context.BuildingRecords.Any())
             {
                 testBuilding = new BuildingRecord
                 {
@@ -27,26 +28,94 @@ namespace EngineeringOnDisplay2017.Models
                 };
 
                 context.Add(testBuilding);
+
+                context.SaveChanges();
             }
 
-            if(!context.ElectricalRecords.Any())
+
+            testBuilding = context.BuildingRecords.Where(record => record.Acronym == "EIB").FirstOrDefault();
+
+            if (!context.ElectricalRecords.Any())
             {
+                DateTime recordTime = DateTime.Now.AddMinutes(-1000*15);
+                float usage = 296797.94f;
+                float demand = 9.08f;
+                float currentDemand;
+                Random randomNum = new Random();
 
-                context.AddRange
-                (
+                for (int i = 0; i < 1000; i++)
+                {
+                    currentDemand = demand + ((float)randomNum.Next(-300, 300)) / 100f; //add or subtract a random amount from the demand to get current demand.  Wanted to have three points of precition so why it goes 
+                    usage = usage + currentDemand / 4f; //calculate how much useage for 15 minutes based on the current demand
 
-                    new ElectricalRecord { RecordedDateTime = DateTime.Now.AddMinutes(-120), Usage = 296637.94f, Demand = 8.08f, BuildingRecord = testBuilding },
-                    new ElectricalRecord { RecordedDateTime = DateTime.Now.AddMinutes(-105), Usage = 296657.94f, Demand = 7.08f, BuildingRecord = testBuilding },
-                    new ElectricalRecord { RecordedDateTime = DateTime.Now.AddMinutes(-90), Usage = 296677.94f, Demand = 9.08f, BuildingRecord = testBuilding },
-                    new ElectricalRecord { RecordedDateTime = DateTime.Now.AddMinutes(-75), Usage = 296687.94f, Demand = 10.08f, BuildingRecord = testBuilding },
-                    new ElectricalRecord { RecordedDateTime = DateTime.Now.AddMinutes(-60), Usage = 296697.94f, Demand = 11.08f, BuildingRecord = testBuilding },
-                    new ElectricalRecord { RecordedDateTime = DateTime.Now.AddMinutes(-45), Usage = 296717.94f, Demand = 7.08f, BuildingRecord = testBuilding },
-                    new ElectricalRecord { RecordedDateTime = DateTime.Now.AddMinutes(-30), Usage = 296737.94f, Demand = 2.08f, BuildingRecord = testBuilding },
-                    new ElectricalRecord { RecordedDateTime = DateTime.Now.AddMinutes(-15), Usage = 296787.94f, Demand = 5.08f, BuildingRecord = testBuilding },
-                    new ElectricalRecord { RecordedDateTime = DateTime.Now, Usage = 296797.94f, Demand = 9.08f, BuildingRecord = testBuilding }
-                );
+                    context.Add(new ElectricalRecord { RecordedDateTime = recordTime, Usage = usage, Demand = currentDemand, BuildingRecord = testBuilding });
+                    recordTime = recordTime.AddMinutes(15);
+                }
             }
 
+            if (!context.WaterRecords.Any())
+            {
+                DateTime recordTime = DateTime.Now.AddMinutes(-1000 * 15);
+                float usage = 1065.0f;
+                float demand = 1.0f;
+                float currentDemand;
+                Random randomNum = new Random();
+
+                for (int i = 0; i < 1000; i++)
+                {
+                    currentDemand = demand + ((float)randomNum.Next(-95, 200)) / 100f; //add or subtract a random amount from the demand to get current demand.  Wanted to have three points of precition so why it goes 
+                    usage = usage + currentDemand / 4f; //calculate how much useage for 15 minutes based on the current demand
+
+                    context.Add(new WaterRecord { RecordedDateTime = recordTime, Usage = usage, BuildingRecord = testBuilding });
+                    recordTime = recordTime.AddMinutes(15);
+                }
+            }
+
+            if (!context.NaturalGasRecords.Any())
+            {
+                DateTime recordTime = DateTime.Now.AddMinutes(-1000 * 15);
+                float usage = 53314.0f;
+                float demand = 1.0f;
+                float currentDemand;
+                Random randomNum = new Random();
+
+                for (int i = 0; i < 1000; i++)
+                {
+                    currentDemand = demand + ((float)randomNum.Next(-50, 100)) / 100f; //add or subtract a random amount from the demand to get current demand.  Wanted to have three points of precition so why it goes 
+                    usage = usage + currentDemand / 4f; //calculate how much useage for 15 minutes based on the current demand
+
+                    context.Add(new NaturalGasRecord { RecordedDateTime = recordTime, Usage = usage, BuildingRecord = testBuilding });
+                    recordTime = recordTime.AddMinutes(15);
+                }
+            }
+
+            if (!context.OutsideTempRecords.Any())
+            {
+                DateTime recordTime = DateTime.Now.AddMinutes(-1000 * 15);
+                float temperature = 60.0f;
+                Random randomNum = new Random();
+
+                for (int i = 0; i < 1000; i++)
+                {
+
+                    if(temperature > 80f)
+                    {
+                        temperature = temperature + randomNum.Next(-5, 0);
+                    }
+                    else if(temperature < 20f)
+                    {
+                        temperature = temperature + randomNum.Next(0, 5);
+                    }
+                    else
+                    {
+                        temperature = temperature + randomNum.Next(-5, 5);
+                    }
+
+                    context.Add(new OutsideTempRecord { RecordedDateTime = recordTime, Temperature = temperature, BuildingRecord = testBuilding });
+                    recordTime = recordTime.AddMinutes(15);
+                }
+
+            }
             context.SaveChanges();
         }
     }
