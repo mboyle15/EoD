@@ -41,26 +41,63 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
+
 
 namespace EngineeringOnDisplay2017.Models
 {
     public class WaterRepository : IWaterRepository
     {
-        public BuildingRecord CurrentBuilding { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        //local copy of context passed in by dependency injection
+        private AppDbContext _appDbContext;
 
-        public WaterRecord GetWaterRecordById(int eletricalRecordId)
+        //simple constructor that stores the local reference to appDbContext passed in though dependency injection
+        //  and does a hard code set of 
+        public WaterRepository(AppDbContext appDbContext)
         {
-            throw new NotImplementedException();
+
+            //store the Context for the database.  Note Context is the glue to the database.  All calls for database go through AppDbContext for this case.  
+            _appDbContext = appDbContext;
+
+
+            //hard set the building to the EIB.  Will have to look how to program for this in the future. 
+            CurrentBuilding = _appDbContext.BuildingRecords.FirstOrDefault(record => record.Acronym == "EIB");
         }
 
+        //property for storing the crrent building to be used in future queries.
+        public BuildingRecord CurrentBuilding { get; set; }
+
+        //return all records with or without specifing the building
         public IEnumerable<WaterRecord> GetWaterRecords()
         {
-            throw new NotImplementedException();
+            //if no building specified
+            if (CurrentBuilding == null)
+            {
+                //return the entire table of records
+                return _appDbContext.WaterRecords.ToList();
+            }
+
+            //else return list of records with currentbuilding specified
+            return _appDbContext.WaterRecords.Where(record => record.BuildingRecord == CurrentBuilding).ToList();
         }
 
+        //get all records in timeframe with or without concer for the current building
         public IEnumerable<WaterRecord> GetWaterRecords(DateTime start, DateTime end)
         {
-            throw new NotImplementedException();
+            //return a list of records within or equal to the timeframe without concern for current building.
+            if (CurrentBuilding == null)
+            {
+                return _appDbContext.WaterRecords.Where(record => record.RecordedDateTime >= start && record.RecordedDateTime <= end).ToList();
+            }
+
+            //else return a list of records within or equal to the timeframe with concern for current building.
+            return _appDbContext.WaterRecords.Where(record => record.RecordedDateTime >= start && record.RecordedDateTime <= end && record.BuildingRecord == CurrentBuilding).ToList();
+        }
+
+        //get a record that matches the passed in record id.
+        public WaterRecord GetWaterRecordById(int recordId)
+        {
+            return _appDbContext.WaterRecords.FirstOrDefault(record => record.WaterRecordId == recordId);
         }
     }
 }

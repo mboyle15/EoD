@@ -29,7 +29,7 @@ namespace EngineeringOnDisplay2017.Models
                 context.Add(testBuilding);
             }
 
-            if(!context.EletricalRecords.Any())
+            if(!context.ElectricalRecords.Any())
             {
 
                 context.AddRange

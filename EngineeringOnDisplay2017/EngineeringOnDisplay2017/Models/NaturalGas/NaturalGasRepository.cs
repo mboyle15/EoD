@@ -60,7 +60,7 @@ namespace EngineeringOnDisplay2017.Models
 
 
             //hard set the building to the EIB.  Will have to look how to program for this in the future. 
-            CurrentBuilding = _appDbContext.BuildingRecords.FirstOrDefault(b => b.Acronym == "EIB");
+            CurrentBuilding = _appDbContext.BuildingRecords.FirstOrDefault(record => record.Acronym == "EIB");
         }
 
         //property for storing the crrent building to be used in future queries.
@@ -96,7 +96,7 @@ namespace EngineeringOnDisplay2017.Models
         //get a record that matches the passed in record id.
         public NaturalGasRecord GetNaturalGasRecordById(int recordId)
         {
-            return _appDbContext.NaturalGasRecords.FirstOrDefault(e => e.NaturalGasRecordId == recordId);
+            return _appDbContext.NaturalGasRecords.FirstOrDefault(record => record.NaturalGasRecordId == recordId);
         }
 
     }

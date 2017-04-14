@@ -40,7 +40,7 @@ namespace EngineeringOnDisplay2017.Models
         public DbSet<BuildingRecord> BuildingRecords { get; set; }
 
         //db connection for the electrical records
-        public DbSet<ElectricalRecord> EletricalRecords { get; set; }
+        public DbSet<ElectricalRecord> ElectricalRecords { get; set; }
 
         //db connection for natural gas records
         public DbSet<NaturalGasRecord> NaturalGasRecords { get; set; }

@@ -17,24 +17,26 @@
  * Class:  CSCE 470 Capstone  Spring 2017
  * College: University of Alaska, Anchorage
  * ***********************************************************************************************************************
- * File: IWaterRepository.cs
+ * File: IBuildingRepository.cs
  * Purpose: Interface for the exposed methods and properties to be used by the controllers and views.
  *          Look at the corrosponding class that implements this interface for more details.  
  * *******************************************************************************************************************/
+
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace EngineeringOnDisplay2017.Models
 {
-    public interface IWaterRepository
+    public interface IBuildingRepository
     {
-        BuildingRecord CurrentBuilding { get; set; } //building the linq queires will be run agains if this property is set
+        IEnumerable<BuildingRecord> GetBuildingRecords();   //get a list of all Buildings in the Building table
 
-        IEnumerable<WaterRecord> GetWaterRecords(); //returns all records with or without regaurds to building
+        BuildingRecord GetBuildingRecordById(int recordId);  //get a building by primay key Id
 
-        IEnumerable<WaterRecord> GetWaterRecords(DateTime start, DateTime end); //returns all records within the timespan with or without regaurds to building
+        void SetBuildingRecord(BuildingRecord newBuilding); //add a new building to the database
 
-        WaterRecord GetWaterRecordById (int eletricalRecordId); //returns record accouding to id
-
+        void SetBuildingRecord(IEnumerable<BuildingRecord> newBuildings); //add a list of new buildings to the database  
     }
 }
