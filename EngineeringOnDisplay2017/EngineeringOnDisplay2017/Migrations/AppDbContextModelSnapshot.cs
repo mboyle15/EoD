@@ -21,7 +21,8 @@ namespace EngineeringOnDisplay2017.Migrations
                     b.Property<int>("BuildingRecordId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Acronym");
+                    b.Property<string>("Acronym")
+                        .IsRequired();
 
                     b.Property<string>("AddressLineOne");
 
@@ -31,9 +32,11 @@ namespace EngineeringOnDisplay2017.Migrations
 
                     b.Property<string>("Name");
 
-                    b.Property<string>("State");
+                    b.Property<string>("State")
+                        .HasMaxLength(2);
 
-                    b.Property<string>("Zip");
+                    b.Property<string>("Zip")
+                        .HasMaxLength(10);
 
                     b.HasKey("BuildingRecordId");
 
@@ -57,7 +60,7 @@ namespace EngineeringOnDisplay2017.Migrations
 
                     b.HasIndex("BuildingRecordId");
 
-                    b.ToTable("EletricalRecords");
+                    b.ToTable("ElectricalRecords");
                 });
 
             modelBuilder.Entity("EngineeringOnDisplay2017.Models.NaturalGasRecord", b =>

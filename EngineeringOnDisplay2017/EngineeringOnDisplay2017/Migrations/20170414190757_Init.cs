@@ -15,13 +15,13 @@ namespace EngineeringOnDisplay2017.Migrations
                 {
                     BuildingRecordId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Acronym = table.Column<string>(nullable: true),
+                    Acronym = table.Column<string>(nullable: false),
+                    Name = table.Column<string>(nullable: true),
                     AddressLineOne = table.Column<string>(nullable: true),
                     AddressLineTwo = table.Column<string>(nullable: true),
                     City = table.Column<string>(nullable: true),
-                    Name = table.Column<string>(nullable: true),
-                    State = table.Column<string>(nullable: true),
-                    Zip = table.Column<string>(nullable: true)
+                    State = table.Column<string>(maxLength: 2, nullable: true),
+                    Zip = table.Column<string>(maxLength: 10, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -29,21 +29,21 @@ namespace EngineeringOnDisplay2017.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "EletricalRecords",
+                name: "ElectricalRecords",
                 columns: table => new
                 {
                     ElectricalRecordId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    RecordedDateTime = table.Column<DateTime>(nullable: false),
                     BuildingRecordId = table.Column<int>(nullable: true),
                     Demand = table.Column<float>(nullable: false),
-                    RecordedDateTime = table.Column<DateTime>(nullable: false),
                     Usage = table.Column<float>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_EletricalRecords", x => x.ElectricalRecordId);
+                    table.PrimaryKey("PK_ElectricalRecords", x => x.ElectricalRecordId);
                     table.ForeignKey(
-                        name: "FK_EletricalRecords_BuildingRecords_BuildingRecordId",
+                        name: "FK_ElectricalRecords_BuildingRecords_BuildingRecordId",
                         column: x => x.BuildingRecordId,
                         principalTable: "BuildingRecords",
                         principalColumn: "BuildingRecordId",
@@ -56,9 +56,9 @@ namespace EngineeringOnDisplay2017.Migrations
                 {
                     NaturalGasRecordId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    BuildingRecordId = table.Column<int>(nullable: true),
                     RecordedDateTime = table.Column<DateTime>(nullable: false),
-                    Usage = table.Column<float>(nullable: false)
+                    Usage = table.Column<float>(nullable: false),
+                    BuildingRecordId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -77,9 +77,9 @@ namespace EngineeringOnDisplay2017.Migrations
                 {
                     OutsideTempRecordId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    BuildingRecordId = table.Column<int>(nullable: true),
                     RecordedDateTime = table.Column<DateTime>(nullable: false),
-                    Temperature = table.Column<float>(nullable: false)
+                    Temperature = table.Column<float>(nullable: false),
+                    BuildingRecordId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -98,9 +98,9 @@ namespace EngineeringOnDisplay2017.Migrations
                 {
                     WaterRecordId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    BuildingRecordId = table.Column<int>(nullable: true),
                     RecordedDateTime = table.Column<DateTime>(nullable: false),
-                    Usage = table.Column<float>(nullable: false)
+                    Usage = table.Column<float>(nullable: false),
+                    BuildingRecordId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -114,9 +114,14 @@ namespace EngineeringOnDisplay2017.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_EletricalRecords_BuildingRecordId",
-                table: "EletricalRecords",
+                name: "IX_ElectricalRecords_BuildingRecordId",
+                table: "ElectricalRecords",
                 column: "BuildingRecordId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ElectricalRecords_RecordedDateTime",
+                table: "ElectricalRecords",
+                column: "RecordedDateTime");
 
             migrationBuilder.CreateIndex(
                 name: "IX_NaturalGasRecords_BuildingRecordId",
@@ -124,20 +129,35 @@ namespace EngineeringOnDisplay2017.Migrations
                 column: "BuildingRecordId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_NaturalGasRecords_RecordedDateTime",
+                table: "NaturalGasRecords",
+                column: "RecordedDateTime");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_OutsideTempRecords_BuildingRecordId",
                 table: "OutsideTempRecords",
                 column: "BuildingRecordId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_OutsideTempRecords_RecordedDateTime",
+                table: "OutsideTempRecords",
+                column: "RecordedDateTime");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_WaterRecords_BuildingRecordId",
                 table: "WaterRecords",
                 column: "BuildingRecordId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_WaterRecords_RecordedDateTime",
+                table: "WaterRecords",
+                column: "RecordedDateTime");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "EletricalRecords");
+                name: "ElectricalRecords");
 
             migrationBuilder.DropTable(
                 name: "NaturalGasRecords");
