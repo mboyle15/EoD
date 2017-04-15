@@ -1,0 +1,25 @@
+﻿@model SensorViewModel
+
+
+<div class="scrollTable">
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Demand</th>
+            <th>Usage</th>
+            <th>Time Recorded</th>
+            <th>Building Acronym</th>
+        </tr>
+
+        @foreach (var record in Model.ElectricalRecords)
+        {
+            <tr>
+                <td>@record.ElectricalRecordId</td>
+                <td>@record.Demand kW</td>
+                <td>@record.Usage kWh</td>
+                <td>@record.RecordedDateTime</td>
+                <td>@record.BuildingRecord.Acronym</td>
+            </tr>
+        }
+    </table>
+</div>

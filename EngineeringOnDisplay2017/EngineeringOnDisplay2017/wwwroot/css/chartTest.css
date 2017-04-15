@@ -1,0 +1,9 @@
+﻿.scrollTable {
+    height: 500px;
+    overflow: auto;
+}
+
+.normalGraph {
+    width: 1000px;
+
+}

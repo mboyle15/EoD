@@ -59,11 +59,38 @@ namespace EngineeringOnDisplay2017.Controllers
     public class SensorController : Controller
     {
         private IElectricalRepository _eletricalRepository;
+        private IWaterRepository _waterRepository;
+        private INaturalGasRepository _naturalGasRepository;
+        private IOutsideTempRepository _outsideTempRepository;
+        //private IBuildingRepository _buildingRepository;
 
-        public SensorController(IElectricalRepository electricalRepository)
+        public SensorController(IElectricalRepository electricalRepository, IWaterRepository waterRepository, INaturalGasRepository naturalGasRepository, IOutsideTempRepository outsideTempRepository)
         {
             _eletricalRepository = electricalRepository;
+            _waterRepository = waterRepository;
+            _naturalGasRepository = naturalGasRepository;
+            _outsideTempRepository = outsideTempRepository;
+            
         }
+
+        //create a test view for the sensors
+        public IActionResult SensorTest()
+        {
+            SensorViewModel sensorViewModel = new SensorViewModel();
+
+            //start and end time for the 
+            DateTime start = new DateTime(2017, 4, 13, 8, 0, 0);
+            DateTime end = new DateTime(2017, 4, 14, 10, 0, 0);
+
+            //DateTime oend = DateTime.Now;
+            //DateTime ostart = end.AddHours(-24); 
+
+            sensorViewModel.ElectricalRecords = _eletricalRepository.GetElectricalRecords(start, end);
+            
+
+            return View(sensorViewModel);
+        }
+
 
         //controller for the EletricalUsage View
         public IActionResult ElectricalUsage()

@@ -88,7 +88,7 @@ namespace EngineeringOnDisplay2017.Models
             }
 
             //else return a list of records within or equal to the timeframe with concern for current building.
-            return _appDbContext.ElectricalRecords.Where(record => record.RecordedDateTime >= start && record.RecordedDateTime <= end && record.BuildingRecord == CurrentBuilding).ToList();
+            return _appDbContext.ElectricalRecords.Where(record => record.RecordedDateTime >= start && record.RecordedDateTime <= end && record.BuildingRecord == CurrentBuilding).OrderBy(record => record.RecordedDateTime).ToList();
         }
 
         //get a record that matches the passed in record id.
