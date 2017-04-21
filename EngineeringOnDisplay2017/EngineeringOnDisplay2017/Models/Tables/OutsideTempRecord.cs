@@ -22,19 +22,24 @@
  * *******************************************************************************************************************/
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EngineeringOnDisplay2017.Models
 {
-    public class OutsideTempRecord
+    public class OutsideTempRecord: ISensor
     {
         [Required]
-        public int OutsideTempRecordId { get; set; } //primary key for record
+        public int Id { get; set; } //primary key for record
 
         [Required]
         public DateTime RecordedDateTime { get; set; }  //time record was created
 
-        public float Temperature { get; set; } //Temperature in degrees F
-        
-        public BuildingRecord BuildingRecord { get; set; }  //reference to that building record.
+        public float Amount { get; set; } //Temperature in degrees F
+
+        [NotMapped]
+        public float Change { get; set; } //how much temperature changed.  Not mapped in database.
+
+        public BuildingRecord Building { get; set; }  //reference to that building record.
+
     }
 }

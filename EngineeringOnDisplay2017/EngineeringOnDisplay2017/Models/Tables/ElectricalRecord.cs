@@ -17,26 +17,29 @@
  * Class:  CSCE 470 Capstone  Spring 2017
  * College: University of Alaska, Anchorage
  * ***********************************************************************************************************************
- * File: NaturalGasRecord.cs
- * Purpose: Model for the NaturalGas sensor in buildings
- * 
+ * File: ElectricalRecord.cs
+ * Purpose: Model for the electrical sensor in buildings
  * *******************************************************************************************************************/
-
 using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace EngineeringOnDisplay2017.Models
 {
-    public class NaturalGasRecord
+    /**
+     * Model for storing a record (row in table) of eletrical sensor data.
+     */
+    public class ElectricalRecord: ISensor
     {
-        [Required]
-        public int NaturalGasRecordId { get; set; } //primary key for record
+        [Key]
+        public int Id { get; set; }  //primary key for record
 
         [Required]
-        public DateTime RecordedDateTime { get; set; }  //time record was created
+        public DateTime RecordedDateTime { get; set; }  //when is this data recorded
 
-        public float Usage { get; set; } //Natural Gas usage in ccf or 100 cubic feet of natural gas
+        public float Amount { get; set; }  //usage in kilowatthours  (don't know when this number gets reset to zero)
+        
+        public float Change { get; set; }   //demand in kilowatts 
 
-        public BuildingRecord BuildingRecord { get; set; }  //reference to that building record.
+        public BuildingRecord Building { get; set; } //a reference to the foriegn key (don't really understand how this works.
     }
 }

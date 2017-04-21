@@ -31,11 +31,11 @@
                 @foreach (var record in Model.ElectricalRecords)
                 {
                     <tr>
-                        <td>@record.ElectricalRecordId</td>
-                        <td>@record.Demand kW</td>
-                        <td>@record.Usage kWh</td>
+                        <td>@record.Id</td>
+                        <td>@record.Change kW</td>
+                        <td>@record.Amount kWh</td>
                         <td>@record.RecordedDateTime</td>
-                        <td>@record.BuildingRecord.Acronym</td>
+                        <td>@record.Building.Acronym</td>
                     </tr>
                 }
             </table>
@@ -73,7 +73,7 @@
                     [
                         @foreach(var record in Model.ElectricalRecords)
                         {
-                            @:@record.Demand,
+                            @:@record.Change,
 
                         }
                     ],

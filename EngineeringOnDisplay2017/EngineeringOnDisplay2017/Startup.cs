@@ -31,11 +31,7 @@ namespace EngineeringOnDisplay2017
             services.AddMvc();
             services.AddDbContext<AppDbContext>(options =>
                                         options.UseSqlServer("Server = (localdb)\\MSSQLLocalDB; Database = EngrOnDispSpr2017; Trusted_Connection = True; MultipleActiveResultSets = true"));
-            services.AddTransient<IElectricalRepository, ElectricalRepository>();
-            services.AddTransient<INaturalGasRepository, NaturalGasRepository>();
-            services.AddTransient<IWaterRepository, WaterRepository>();
-            services.AddTransient<IOutsideTempRepository, OutsideTempRepository>();
-            services.AddTransient<IBuildingRepository, BuildingRepository>();
+            services.AddTransient<ISensorRepository, SensorRepository>();
 
         }
 

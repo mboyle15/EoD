@@ -48,7 +48,7 @@ namespace EngineeringOnDisplay2017.Models
                     currentDemand = demand + ((float)randomNum.Next(-300, 300)) / 100f; //add or subtract a random amount from the demand to get current demand.  Wanted to have three points of precition so why it goes 
                     usage = usage + currentDemand / 4f; //calculate how much useage for 15 minutes based on the current demand
 
-                    context.Add(new ElectricalRecord { RecordedDateTime = recordTime, Usage = usage, Demand = currentDemand, BuildingRecord = testBuilding });
+                    context.Add(new ElectricalRecord { RecordedDateTime = recordTime, Amount = usage, Change = currentDemand, Building = testBuilding });
                     recordTime = recordTime.AddMinutes(15);
                 }
             }
@@ -66,7 +66,7 @@ namespace EngineeringOnDisplay2017.Models
                     currentDemand = demand + ((float)randomNum.Next(-95, 200)) / 100f; //add or subtract a random amount from the demand to get current demand.  Wanted to have three points of precition so why it goes 
                     usage = usage + currentDemand / 4f; //calculate how much useage for 15 minutes based on the current demand
 
-                    context.Add(new WaterRecord { RecordedDateTime = recordTime, Usage = usage, BuildingRecord = testBuilding });
+                    context.Add(new WaterRecord { RecordedDateTime = recordTime, Amount = usage, Building = testBuilding });
                     recordTime = recordTime.AddMinutes(15);
                 }
             }
@@ -84,7 +84,7 @@ namespace EngineeringOnDisplay2017.Models
                     currentDemand = demand + ((float)randomNum.Next(-50, 100)) / 100f; //add or subtract a random amount from the demand to get current demand.  Wanted to have three points of precition so why it goes 
                     usage = usage + currentDemand / 4f; //calculate how much useage for 15 minutes based on the current demand
 
-                    context.Add(new NaturalGasRecord { RecordedDateTime = recordTime, Usage = usage, BuildingRecord = testBuilding });
+                    context.Add(new NaturalGasRecord { RecordedDateTime = recordTime, Amount = usage, Building = testBuilding });
                     recordTime = recordTime.AddMinutes(15);
                 }
             }
@@ -111,7 +111,7 @@ namespace EngineeringOnDisplay2017.Models
                         temperature = temperature + randomNum.Next(-5, 5);
                     }
 
-                    context.Add(new OutsideTempRecord { RecordedDateTime = recordTime, Temperature = temperature, BuildingRecord = testBuilding });
+                    context.Add(new OutsideTempRecord { RecordedDateTime = recordTime, Amount = temperature, Building = testBuilding });
                     recordTime = recordTime.AddMinutes(15);
                 }
 

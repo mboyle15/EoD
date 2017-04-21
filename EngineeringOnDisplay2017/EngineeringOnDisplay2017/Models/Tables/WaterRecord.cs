@@ -17,23 +17,28 @@
  * Class:  CSCE 470 Capstone  Spring 2017
  * College: University of Alaska, Anchorage
  * ***********************************************************************************************************************
- * File: INaturalGasRepository.cs
- * Purpose: Interface for the exposed methods and properties to be used by the controllers and views.
- *          Look at the corrosponding class that implements this interface for more details.  
+ * File: WaterRecord.cs
+ * Purpose: Model for the water sensor in buildings
  * *******************************************************************************************************************/
 using System;
-using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EngineeringOnDisplay2017.Models
 {
-    public interface INaturalGasRepository
+    public class WaterRecord: ISensor
     {
-        BuildingRecord CurrentBuilding { get; set; } //building the linq queires will be run agains if this property is set
+        [Key]
+        public int Id { get; set; } //primary key for record
 
-        IEnumerable<NaturalGasRecord> GetNaturalGasRecords();  //returns all records with or without regaurds to building
+        [Required]       
+        public DateTime RecordedDateTime { get; set; }  //time record was created
 
-        IEnumerable<NaturalGasRecord> GetNaturalGasRecords(DateTime start, DateTime end); //returns all records within the timespan with or without regaurds to building
+        public float Amount { get; set; } //Water usage in Gallons
 
-        NaturalGasRecord GetNaturalGasRecordById(int eletricalRecordId); //returns record accouding to id
+        [NotMapped]
+        public float Change { get; set; } //How much demand is for water.  Gallons per time period.  Not mapped in models
+
+        public BuildingRecord Building { get; set; }  //reference to that building record.
     }
 }

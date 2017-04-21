@@ -17,23 +17,30 @@
  * Class:  CSCE 470 Capstone  Spring 2017
  * College: University of Alaska, Anchorage
  * ***********************************************************************************************************************
- * File: INaturalGasRepository.cs
- * Purpose: Interface for the exposed methods and properties to be used by the controllers and views.
- *          Look at the corrosponding class that implements this interface for more details.  
+ * File: NaturalGasRecord.cs
+ * Purpose: Model for the NaturalGas sensor in buildings
+ * 
  * *******************************************************************************************************************/
+
 using System;
-using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EngineeringOnDisplay2017.Models
 {
-    public interface IOutsideTempRepository
+    public class NaturalGasRecord: ISensor
     {
-        BuildingRecord CurrentBuilding { get; set; } //building the linq queires will be run agains if this property is set
+        [Key]
+        public int Id { get; set; } //primary key for record
 
-        IEnumerable<OutsideTempRecord> GetOutsideTempRecords();  //returns all records with or without regaurds to building
+        [Required]
+        public DateTime RecordedDateTime { get; set; }  //time record was created
 
-        IEnumerable<OutsideTempRecord> GetOutsideTempRecords(DateTime start, DateTime end); //returns all records within the timespan with or without regaurds to building
+        public float Amount { get; set; } //Natural Gas usage in ccf or 100 cubic feet of natural gas
 
-        OutsideTempRecord GetOutsideTempRecordById(int eletricalRecordId); //returns record accouding to id
+        [NotMapped]
+        public float Change { get; set; }
+
+        public BuildingRecord Building { get; set; }  //reference to that building record.
     }
 }
