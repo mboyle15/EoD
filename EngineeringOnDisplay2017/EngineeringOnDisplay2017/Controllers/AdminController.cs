@@ -46,7 +46,17 @@ namespace EngineeringOnDisplay2017.Controllers
     public class AdminController : Controller
     {
         // GET: /<controller>/
-        public IActionResult Index()
+        public IActionResult Login()
+        {
+            return View();
+        }
+
+        public IActionResult Metrics()
+        {
+            return View();
+        }
+
+        public IActionResult AdsSetUp()
         {
             return View();
         }

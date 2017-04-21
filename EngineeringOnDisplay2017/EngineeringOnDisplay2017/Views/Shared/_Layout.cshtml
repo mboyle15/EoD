@@ -4,26 +4,16 @@
     <title>Engineering on Dispay - @ViewBag.Title</title>
     <meta charset="utf-8" />
 
-  
-   <link rel="stylesheet" href="~/lib/bootswatch/spacelab/bootstrap.min.css"/>
-   <link rel="stylesheet" href="~/lib/font-awesome/css/font-awesome.min.css" />
-   <link rel="stylesheet" href="~/css/site.css" />
+
+    <link rel="stylesheet" href="~/lib/bootswatch/spacelab/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
-    <script>
-
-        function passiveAdsLaunch() {
-            window.open("http://localhost:59026/PassiveAds/PassiveAds", "_self");
-        }
-        window.onload = setTimeout(passiveAdsLaunch, 1000000);
-    </script>
-
-
-
     <div class="row">
         <div class="col-xs-12">
             <div id="UaaHead">
-                
+
             </div>
         </div>
     </div>
@@ -33,10 +23,12 @@
 
             <!--Navagation fro the site on the left side-->
             <div id="sidebar" class="col-xs-2">
+                <a href="~/Views/_ViewImports.cshtml">~/Views/_ViewImports.cshtml</a>
                 <ul class="nav">
-                    <li><a asp-controller="Home" asp-action="Index" class="btn btn-primary btn-">Home</a></li>
-                    <li><a asp-controller="Home" asp-action="About" class="btn btn-primary">About</a></li>
-                    <li><a asp-controller="Home" asp-action="Contact" class="btn btn-primary">Contact</a></li>
+                    <li><a asp-controller="Home" asp-action="Index" class="btn btn-primary btn-" onclick="stopTimer()">Home</a></li>
+                    <li><a asp-controller="Home" asp-action="About" class="btn btn-primary" onclick="stopTimer()">About</a></li>
+                    <li><a asp-controller="Home" asp-action="Contact" class="btn btn-primary" onclick="stopTimer()">Contact</a></li>
+                    <li><a asp-controller="Admin" asp-action="Login" class="btn btn-primary" onclick="stopTimer()">Admin</a></li>
                 </ul>
                 <hr />
                 <span>Sensors</span>
@@ -52,7 +44,7 @@
 
             <!--View is rendered in this space.  It is offset from the side of the container by 2 so it sits out from the menu-->
             <div id="wrapper" class="col-xs-10 col-xs-offset-2">
-                
+
 
                 @RenderBody()
 
@@ -65,6 +57,18 @@
     <script type="text/javascript" src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
     @RenderSection("scripts", false)
     <script type="text/javascript" src="~/js/site.js"></script>
+
+    <script>
+        function passiveAdsLaunch() {
+            window.open("http://localhost:59026/PassiveAds/PassiveAds", "_self");
+        }
+
+        function stopTimer() {
+            clearTimeout(timer);
+        }
+
+        timer = window.onload = setTimeout(passiveAdsLaunch, 900000);
+    </script>
 
 </body>
 </html>

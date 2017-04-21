@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Engineering on Dispay - @ViewBag.Title</title>
+    <meta charset="utf-8" />
+
+
+    <link rel="stylesheet" href="~/lib/bootswatch/spacelab/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <div class="row">
+        <div class="col-xs-12">
+            <div id="UaaHead">
+
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="container-fluid">
+
+            <!--Navagation fro the site on the left side-->
+            <div id="sidebar" class="col-xs-2">
+                <a href="~/Views/_ViewImports.cshtml">~/Views/_ViewImports.cshtml</a>
+                <ul class="nav">
+                    <li><a asp-controller="Home" asp-action="Index" class="btn btn-primary btn-">Main display</a></li>
+                </ul>
+                <hr />
+                <ul class="nav">
+                    <li><a asp-controller="Admin" asp-action="Login" class="btn btn-success btn-lg"><i aria-hidden="true"></i> Login details</a></li>
+                    <li><a asp-controller="Admin" asp-action="AdsSetUp" class="btn btn-success btn-lg"><i aria-hidden="true"></i> Ads set up</a></li>
+                    <li><a asp-controller="Admin" asp-action="Metrics" class="btn btn-success btn-lg"><i aria-hidden="true"></i> Metrics</a></li>
+                </ul>
+
+            </div>
+
+            <!--View is rendered in this space.  It is offset from the side of the container by 2 so it sits out from the menu-->
+            <div id="wrapper" class="col-xs-10 col-xs-offset-2">
+
+
+                @RenderBody()
+
+            </div>
+        </div>
+    </div>
+
+    <!--Javascript imports-->
+    <script type="text/javascript" src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    @RenderSection("scripts", false)
+    <script type="text/javascript" src="~/js/site.js"></script>
+
+</body>
+</html>

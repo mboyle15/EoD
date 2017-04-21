@@ -7632,10 +7632,10 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\andre\\OneDrive\\Documents\\work\\uni work\\3rd year\\semester 2\\A470\\project\\full\\EoD\\EngineeringOnDisplay2017\\EngineeringOnDisplay2017\\EngineeringOnDisplay2017.csproj",
+      "projectUniqueName": "C:\\Users\\andre\\OneDrive\\Documents\\work\\uni work\\3rd year\\semester 2\\A470\\project\\full\\true\\EoD\\EngineeringOnDisplay2017\\EngineeringOnDisplay2017\\EngineeringOnDisplay2017.csproj",
       "projectName": "EngineeringOnDisplay2017",
-      "projectPath": "C:\\Users\\andre\\OneDrive\\Documents\\work\\uni work\\3rd year\\semester 2\\A470\\project\\full\\EoD\\EngineeringOnDisplay2017\\EngineeringOnDisplay2017\\EngineeringOnDisplay2017.csproj",
-      "outputPath": "C:\\Users\\andre\\OneDrive\\Documents\\work\\uni work\\3rd year\\semester 2\\A470\\project\\full\\EoD\\EngineeringOnDisplay2017\\EngineeringOnDisplay2017\\obj\\",
+      "projectPath": "C:\\Users\\andre\\OneDrive\\Documents\\work\\uni work\\3rd year\\semester 2\\A470\\project\\full\\true\\EoD\\EngineeringOnDisplay2017\\EngineeringOnDisplay2017\\EngineeringOnDisplay2017.csproj",
+      "outputPath": "C:\\Users\\andre\\OneDrive\\Documents\\work\\uni work\\3rd year\\semester 2\\A470\\project\\full\\true\\EoD\\EngineeringOnDisplay2017\\EngineeringOnDisplay2017\\obj\\",
       "projectStyle": "PackageReference",
       "originalTargetFrameworks": [
         "net452"
