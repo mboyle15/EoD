@@ -79,13 +79,13 @@ namespace EngineeringOnDisplay2017.Controllers
             //DateTime oend = DateTime.Now;
             //DateTime ostart = end.AddHours(-24); 
 
-            sensorViewModel.ElectricalRecords =(IEnumerable<ElectricalRecord>)_sensorRepository.GetSensorRecords(SensorType.Electrical, start, end);
+            sensorViewModel.SensorRecords = _sensorRepository.GetSensorRecords(SensorType.Electrical, start, end);
             
            
             return View(sensorViewModel);
         }
 
-        public IActionResult SensorData(string input)
+        public IActionResult SensorData(string SenorType, string Scale)
         {
 
 
@@ -103,13 +103,36 @@ namespace EngineeringOnDisplay2017.Controllers
         }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         //controller for the EletricalUsage View
         public IActionResult ElectricalUsage()
         {
-            //create an instace of the SensorViewModel that has all the models wrapped inside.
-            SensorViewModel sensorViewModel = new SensorViewModel();
-            sensorViewModel.ElectricalRecords =(IEnumerable<ElectricalRecord>) _sensorRepository.GetSensorRecords(SensorType.Electrical);
-
+            
             return View();
         }
 

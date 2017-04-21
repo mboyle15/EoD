@@ -5,6 +5,6 @@ namespace EngineeringOnDisplay2017.ViewModels
 {
     public class SensorViewModel
     {
-        public IEnumerable<ElectricalRecord> ElectricalRecords { get; set; }
+        public IEnumerable<ISensor> SensorRecords { get; set; }
     }
 }

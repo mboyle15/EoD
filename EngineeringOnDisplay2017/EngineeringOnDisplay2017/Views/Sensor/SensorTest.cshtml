@@ -5,6 +5,7 @@
 <html>
 <head>
     <link href="~/css/chartTest.css" rel="stylesheet"/>
+    
 
 
 </head>
@@ -28,7 +29,7 @@
                     <th>Building Acronym</th>
                 </tr>
 
-                @foreach (var record in Model.ElectricalRecords)
+                @foreach (var record in Model.SensorRecords)
                 {
                     <tr>
                         <td>@record.Id</td>
@@ -59,7 +60,7 @@
             data:
             {
                 labels: [
-                    @foreach(var record in Model.ElectricalRecords)
+                    @foreach(var record in Model.SensorRecords)
                     {
                         @:"@record.RecordedDateTime.ToString("MMM dd hh:mm tt")",
 
@@ -71,7 +72,7 @@
                     label: "Electrical Demand",
                     data:
                     [
-                        @foreach(var record in Model.ElectricalRecords)
+                        @foreach(var record in Model.SensorRecords)
                         {
                             @:@record.Change,
 

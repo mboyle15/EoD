@@ -21,10 +21,10 @@ namespace EngineeringOnDisplay2017.Models
                 {
                     Name = "Engineering and Industry Building",
                     Acronym = "EIB",
-                    AddressLineOne = "123 Sesseme Street",
+                    AddressLineOne = "2900 Spirit Dr",
                     City = "Anchorage",
                     State = "AK",
-                    Zip = "99502"
+                    Zip = "99508"
                 };
 
                 context.Add(testBuilding);
@@ -37,7 +37,7 @@ namespace EngineeringOnDisplay2017.Models
 
             if (!context.ElectricalRecords.Any())
             {
-                DateTime recordTime = DateTime.Now.AddMinutes(-1000*15);
+                DateTime recordTime = DateTime.Now.AddMinutes(-1000 * 15);
                 float usage = 296797.94f;
                 float demand = 9.08f;
                 float currentDemand;
@@ -98,11 +98,11 @@ namespace EngineeringOnDisplay2017.Models
                 for (int i = 0; i < 1000; i++)
                 {
 
-                    if(temperature > 80f)
+                    if (temperature > 80f)
                     {
                         temperature = temperature + randomNum.Next(-5, 0);
                     }
-                    else if(temperature < 20f)
+                    else if (temperature < 20f)
                     {
                         temperature = temperature + randomNum.Next(0, 5);
                     }

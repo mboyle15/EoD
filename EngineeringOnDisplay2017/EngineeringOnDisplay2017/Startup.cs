@@ -29,8 +29,16 @@ namespace EngineeringOnDisplay2017
         {
             // Add framework services.
             services.AddMvc();
+
+            //local db connection
             services.AddDbContext<AppDbContext>(options =>
                                         options.UseSqlServer("Server = (localdb)\\MSSQLLocalDB; Database = EngrOnDispSpr2017; Trusted_Connection = True; MultipleActiveResultSets = true"));
+
+            //remote db
+            //services.AddDbContext<AppDbContext>(options =>
+            //                           options.UseSqlServer("Data Source=uaa-engrondisplay.duckdns.org;Initial Catalog=EIBdata;Integrated Security=False;User ID=sa;Password=cse2017-eod;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"));
+
+
             services.AddTransient<ISensorRepository, SensorRepository>();
 
         }
