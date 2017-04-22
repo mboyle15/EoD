@@ -1,0 +1,121 @@
+﻿/*****************************************************************************************
+    File: site.css  
+    Purpose: The final overriding css for the website. 
+    Project: Engineering on Dispay
+
+    Authors:  Terrance Mount, Andew Smart, Martin Boyle
+    College: University of Alaska, Anchorage
+    Instructor: Martin Ceneck
+    Semester: Spring 2017
+    Course: CSCE 470 
+********************************************************************************************/
+
+
+#sidebar{
+    padding-top:10px;
+    background: #2a2c36;
+    color: #eee;
+    height: 100%;
+    position:fixed;
+    overflow: hidden;
+    transition: left ease .25s;
+}
+
+#wrapper{
+    background:#eee;
+    position:fixed;
+    height:100%
+}
+
+
+#UaaHead {
+    height: 75px;
+    background-image: url('../images/headrtxtr-3.png');
+    margin:0;
+}
+
+#UaaHead h1{
+    color:white;
+    padding:0;
+    marin:0;
+}
+
+
+/*  Todo: previous junk,  need to delete when done.
+
+
+#sidebar {
+    background: #2a2c36;
+    color: #eee;
+    position: fixed;
+    height: 100%;
+    width: 250px;
+    overflow: hidden;
+    left: 0;
+    margin: 0;
+    -moz-transition: left ease .25s;
+    -o-transition: left ease .25s;
+    -webkit-transition: left ease .25s;
+    transition: left ease .25s;
+}
+
+    #sidebar.hide-sidebar {
+        left: -250px;
+        -moz-transition: left ease .25s;
+        -o-transition: left ease .25s;
+        -webkit-transition: left ease .25s;
+        transition: left ease .25s;
+    }
+
+#wrapper.hide-sidebar {
+    margin-left: 0;
+    -moz-transition: margin-left ease .25s;
+    -o-transition: margin-left ease .25s;
+    -webkit-transition: margin-left ease .25s;
+    transition: margin-left ease .25s;
+}
+
+/*#main{
+    background-color:#eee;
+    padding: 4px;
+    margin:0;       
+}
+
+#footer{
+    background-color:#222;
+    color:#eee;
+    padding:8px 5px;
+    position:fixed;
+    bottom:0;
+    width:100%;
+}
+
+#wrapper {
+    margin: 0 0 0 250px;
+    -moz-transition: margin-left ease .25s;
+    -o-transition: margin-left ease .25s;
+    -webkit-transition: margin-left ease .25s;
+    transition: margin-left ease .25s;
+}
+
+/*  
+#sidebar ul.nav li a{
+    display:block;
+} 
+
+
+.menu {
+    font-size:12px;
+}
+
+.menu li{
+    list-style-type:none;
+}
+
+.menu li.active{
+    font-weight:bold;
+}
+
+.headshot{
+   max-width:50px;
+}*/

@@ -1,0 +1,114 @@
+﻿@{ 
+    Layout = "";
+}
+@model SensorViewModel
+<html>
+<head>
+    <link href="~/css/chartTest.css" rel="stylesheet"/>
+    
+
+
+</head>
+<body>
+
+    <h1>Engineering on Display</h1>
+    <h2>Graphing Tests</h2>
+
+    <div id="ElectricalSensorGraph">
+        <h3>Electrical Graph for seven days previous</h3>
+        <div class="normalGraph">
+            <canvas id="myChart"></canvas>
+        </div>  
+        <div class="scrollTable">
+            <table border="1">
+                <tr>
+                    <th>ID</th>
+                    <th>Demand</th>
+                    <th>Usage</th>
+                    <th>Time Recorded</th>
+                    <th>Building Acronym</th>
+                </tr>
+
+                @foreach (var record in Model.SensorRecords)
+                {
+                    <tr>
+                        <td>@record.Id</td>
+                        <td>@record.Change kW</td>
+                        <td>@record.Amount kWh</td>
+                        <td>@record.RecordedDateTime</td>
+                        <td>@record.Building.Acronym</td>
+                    </tr>
+                }
+            </table>
+        </div>    
+
+
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js" type="text/javascript"></script>
+    <script src="~/lib/Chart-js/dist/Chart.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+     
+        var ctx = document.getElementById("myChart");
+
+
+        //Chart.defaults.scales.beginAtZero:true;
+
+        var myChart = new Chart(ctx, {
+            type: 'line',
+
+            data:
+            {
+                labels: [
+                    @foreach(var record in Model.SensorRecords)
+                    {
+                        @:"@record.RecordedDateTime.ToString("MMM dd hh:mm tt")",
+
+                    }
+                ],
+                
+                datasets:
+                [{
+                    label: "Electrical Demand",
+                    data:
+                    [
+                        @foreach(var record in Model.SensorRecords)
+                        {
+                            @:@record.Change,
+
+                        }
+                    ],
+                    //yAxisID: "kW",
+                    lineTension: 0,
+                    backgroundColor: "rgba(255,255,0,1)",
+                    borderColor:"#ffc000"
+
+                }]
+            },
+            options:
+            {
+                categoryPercentage: 1,
+                barPercentage: 1,
+                scales:
+                {
+                    yAxes:
+                    [{
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'kiloWatts'
+                        }
+                    }],
+                    xAxes:
+                    [{
+                        ticks:
+                        {
+                            maxTicksLimit: 10
+                        }
+                    }]
+                }
+            }
+        });
+
+    </script>
+</body>
+</html>
