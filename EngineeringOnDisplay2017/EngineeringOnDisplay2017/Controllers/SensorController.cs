@@ -96,10 +96,12 @@ namespace EngineeringOnDisplay2017.Controllers
         public IActionResult DataTest()
         {
 
-            ViewBag.ConsoleOutput = _sensorRepository.TestConsole();
+            //ViewBag.ConsoleOutput = _sensorRepository.TestConsole();
 
 
-            return View(_sensorRepository.QueryTests());
+            //return View(_sensorRepository.QueryTests());
+
+            return View();
         }
 
 

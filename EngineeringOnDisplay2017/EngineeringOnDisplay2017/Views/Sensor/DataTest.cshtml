@@ -1,20 +1,27 @@
 ﻿@{
     Layout = "";
 }
-@model GraphData
+
 
 <html>
 
 <head>
     <title>Query Tests</title>
-    <
+    <link href="~/css/chartTest.css" rel="stylesheet" />
+    <script src="~/lib/jquery/dist/jquery.min.js" type="text/javascript"></script>
+    <script src="~/js/site.js" type="text/javascript"></script>
 </head>
 
 <body>
     <h1>Data Tests</h1>
-
-    <canvas class="graph" graph-type="Electrical" graph-scale="All" graph-start="20170418T12:00AM" graph-end="20170420T11:59PM"></canvas>
-
+    
+    <div id="normalGraph">
+        <canvas class="graph" graph-type="Electrical" graph-scale="All" graph-start="20170418T12:00AM" graph-end="20170420T11:59PM"></canvas>
+        <canvas class="graph" graph-type="Electrical" graph-scale="All" graph-start="20170418T12:00AM" graph-end="20170420T11:59PM"></canvas>
+        <canvas class="graph" graph-type="Electrical" graph-scale="All" graph-start="20170418T12:00AM" graph-end="20170420T11:59PM"></canvas>
+        <canvas class="graph" graph-type="Electrical" graph-scale="All" graph-start="20170418T12:00AM" graph-end="20170420T11:59PM"></canvas>
+        <p id="output">Change Me!!</p>
+    </div>
 
     <h1>Text Output</h1>
     <div style="overflow:auto; height:500px; width:900px">
