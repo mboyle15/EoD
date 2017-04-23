@@ -12,9 +12,19 @@ namespace EngineeringOnDisplay2017.Models
         OutsideTemperature
     }
 
-    public enum GraphType
+    public enum SensorData
     {
-       Usage,
-       Demand
+       Amount,
+       Change
+    }
+
+    public enum GraphScale
+    {
+        All,
+        Hour,
+        Day,
+        Week,
+        Month,
+        Year
     }
 }

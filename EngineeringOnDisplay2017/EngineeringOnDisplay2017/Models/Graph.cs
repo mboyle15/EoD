@@ -5,8 +5,9 @@ using System.Threading.Tasks;
 
 namespace EngineeringOnDisplay2017.Models
 {
-    public class GraphData
+    public class Graph
     {
+
         public IEnumerable<GraphPoint> Points { get; set; }
     }
 }

@@ -89,7 +89,7 @@ namespace EngineeringOnDisplay2017.Models
          * @param   none    
          * @return          Graphdata with a set of points
          **/
-         public GraphData QueryTests()
+         public Graph QueryTests()
         {
             var records = getSenorRecordCollectionFromDb(SensorType.Electrical);
 
@@ -113,7 +113,7 @@ namespace EngineeringOnDisplay2017.Models
             
             
             //return a new graph data with points set
-            return new GraphData() { Points = queryResults_1 };
+            return new Graph() { Points = queryResults_1 };
         }
     
         public string TestConsole()

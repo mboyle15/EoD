@@ -6,7 +6,7 @@ using Microsoft.Extensions.Logging;
 using EngineeringOnDisplay2017.Models;
 
 using Microsoft.EntityFrameworkCore;
-
+using Microsoft.Extensions.Options;
 
 namespace EngineeringOnDisplay2017
 {
@@ -32,14 +32,12 @@ namespace EngineeringOnDisplay2017
 
             //local db connection
             services.AddDbContext<AppDbContext>(options =>
-                                        options.UseSqlServer("Server = (localdb)\\MSSQLLocalDB; Database = EngrOnDispSpr2017; Trusted_Connection = True; MultipleActiveResultSets = true"));
+                                        options.UseSqlServer(Configuration["Logging:ConnectionStrings:LocalEoDConnection"]));
 
-            //remote db
-            //services.AddDbContext<AppDbContext>(options =>
-            //                           options.UseSqlServer("Data Source=uaa-engrondisplay.duckdns.org;Initial Catalog=EIBdata;Integrated Security=False;User ID=sa;Password=cse2017-eod;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"));
-
+            
 
             services.AddTransient<ISensorRepository, SensorRepository>();
+            services.AddTransient<IGraphRepository, GraphRepository>();
 
         }
 

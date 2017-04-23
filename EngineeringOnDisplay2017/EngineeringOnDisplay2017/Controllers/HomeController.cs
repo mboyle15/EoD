@@ -45,7 +45,7 @@ namespace EngineeringOnDisplay2017.Controllers
     public class HomeController : Controller
     {
 
-        //Landing page for the project.
+
         public IActionResult Index()
         {
             return View();
