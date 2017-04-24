@@ -28,5 +28,24 @@ namespace EngineeringOnDisplay2017.Controllers
 
             return Json(_graphRepository.GetGraphPoints(SensorType.Electrical));
         }
+
+        /**
+         * 
+         * 
+         * 
+         **/
+        public JsonResult GetGraphPoints(DateTime start, DateTime end, SensorType sensor, SensorData dataType, GraphScale scale)
+        {
+            //JQuery Request parameters
+            //{ start: $canvasTag.attr("data-graph-start")},
+            //{ end: $canvasTag.attr("data-graph-end")},
+            //{ sensor: $canvasTag.attr("data-graph-sensor")},
+            //{ dataType: $canvasTag.attr("data-graph-data")},
+            //{ scale: $canvasTag.attr("data-graph-scale")}
+
+            return Json(_graphRepository.GetGraphPoints(start, end, sensor, dataType, scale));
+        }
     }
 }
+
+            

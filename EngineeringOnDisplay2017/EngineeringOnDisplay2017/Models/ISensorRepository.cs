@@ -15,7 +15,6 @@ namespace EngineeringOnDisplay2017.Models
 
         ISensor GetSensorRecordById(SensorType sensorType, int RecordId);
 
-        Graph QueryTests();
 
         string TestConsole();
     }

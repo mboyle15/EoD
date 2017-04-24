@@ -89,32 +89,32 @@ namespace EngineeringOnDisplay2017.Models
          * @param   none    
          * @return          Graphdata with a set of points
          **/
-         public Graph QueryTests()
-        {
-            var records = getSenorRecordCollectionFromDb(SensorType.Electrical);
+        // public Graph QueryTests()
+        //{
+        //    var records = getSenorRecordCollectionFromDb(SensorType.Electrical);
 
-            //query with a projection into a new graph points collection
-            var queryResults_1 = records.Where(r => r.Id == 1)
-                                      .Select(r => new GraphPoint()
-                                      {
-                                          X_Value = r.RecordedDateTime,
-                                          Y_Value = r.Amount
-                                      });
+        //    //query with a projection into a new graph points collection
+        //    var queryResults_1 = records.Where(r => r.Id == 1)
+        //                              .Select(r => new GraphPoint()
+        //                              {
+        //                                  X_Value = r.RecordedDateTime,
+        //                                  Y_Value = r.Amount
+        //                              });
 
-            var queryResults_2 =
-                from record in records
-                where record.Id == 1
-                select new GraphPoint()
-                {
-                    X_Value = record.RecordedDateTime,
-                    Y_Value = record.Amount
-                };
+        //    var queryResults_2 =
+        //        from record in records
+        //        where record.Id == 1
+        //        select new GraphPoint()
+        //        {
+        //            X_Value = record.RecordedDateTime,
+        //            Y_Value = record.Amount
+        //        };
             
             
             
-            //return a new graph data with points set
-            return new Graph() { Points = queryResults_1 };
-        }
+        //    //return a new graph data with points set
+        //    return new Graph() { Points = queryResults_1 };
+        //}
     
         public string TestConsole()
         {   

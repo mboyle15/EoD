@@ -13,7 +13,7 @@ namespace EngineeringOnDisplay2017.Models
         {
             AppDbContext context = applicationBuilder.ApplicationServices.GetRequiredService<AppDbContext>();
             BuildingRecord testBuilding = null;
-
+            long numRecordsToGenerate = 175200;
 
             if (!context.BuildingRecords.Any())
             {
@@ -37,13 +37,13 @@ namespace EngineeringOnDisplay2017.Models
 
             if (!context.ElectricalRecords.Any())
             {
-                DateTime recordTime = DateTime.Now.AddMinutes(-1000 * 15);
+                DateTime recordTime = DateTime.Now.AddMinutes(numRecordsToGenerate * -15);
                 float usage = 296797.94f;
                 float demand = 9.08f;
                 float currentDemand;
                 Random randomNum = new Random();
 
-                for (int i = 0; i < 1000; i++)
+                for (int i = 0; i < numRecordsToGenerate; i++)
                 {
                     currentDemand = demand + ((float)randomNum.Next(-300, 300)) / 100f; //add or subtract a random amount from the demand to get current demand.  Wanted to have three points of precition so why it goes 
                     usage = usage + currentDemand / 4f; //calculate how much useage for 15 minutes based on the current demand
@@ -55,13 +55,13 @@ namespace EngineeringOnDisplay2017.Models
 
             if (!context.WaterRecords.Any())
             {
-                DateTime recordTime = DateTime.Now.AddMinutes(-1000 * 15);
+                DateTime recordTime = DateTime.Now.AddMinutes(-(numRecordsToGenerate) * 15);
                 float usage = 1065.0f;
                 float demand = 1.0f;
                 float currentDemand;
                 Random randomNum = new Random();
 
-                for (int i = 0; i < 1000; i++)
+                for (int i = 0; i < numRecordsToGenerate; i++)
                 {
                     currentDemand = demand + ((float)randomNum.Next(-95, 200)) / 100f; //add or subtract a random amount from the demand to get current demand.  Wanted to have three points of precition so why it goes 
                     usage = usage + currentDemand / 4f; //calculate how much useage for 15 minutes based on the current demand
@@ -73,13 +73,13 @@ namespace EngineeringOnDisplay2017.Models
 
             if (!context.NaturalGasRecords.Any())
             {
-                DateTime recordTime = DateTime.Now.AddMinutes(-1000 * 15);
+                DateTime recordTime = DateTime.Now.AddMinutes(-(numRecordsToGenerate) * 15);
                 float usage = 53314.0f;
                 float demand = 1.0f;
                 float currentDemand;
                 Random randomNum = new Random();
 
-                for (int i = 0; i < 1000; i++)
+                for (int i = 0; i < numRecordsToGenerate; i++)
                 {
                     currentDemand = demand + ((float)randomNum.Next(-50, 100)) / 100f; //add or subtract a random amount from the demand to get current demand.  Wanted to have three points of precition so why it goes 
                     usage = usage + currentDemand / 4f; //calculate how much useage for 15 minutes based on the current demand
@@ -91,11 +91,11 @@ namespace EngineeringOnDisplay2017.Models
 
             if (!context.OutsideTempRecords.Any())
             {
-                DateTime recordTime = DateTime.Now.AddMinutes(-1000 * 15);
+                DateTime recordTime = DateTime.Now.AddMinutes(-(numRecordsToGenerate) * 15);
                 float temperature = 60.0f;
                 Random randomNum = new Random();
 
-                for (int i = 0; i < 1000; i++)
+                for (int i = 0; i < numRecordsToGenerate; i++)
                 {
 
                     if (temperature > 80f)
