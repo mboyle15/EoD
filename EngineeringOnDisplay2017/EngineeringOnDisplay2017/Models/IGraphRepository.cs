@@ -9,10 +9,10 @@ namespace EngineeringOnDisplay2017.Models
     {
 
 
-        IEnumerable<GraphPoint> GetGraphPoints(SensorType sensorType);
+        GraphPoints GetGraphPoints(SensorType sensorType);
 
 
-        IEnumerable<GraphPoint> GetGraphPoints(DateTime start, DateTime end, SensorType sensorType, SensorData sensorData, GraphScale graphScale);
+        GraphPoints GetGraphPoints(DateTime start, DateTime end, SensorType sensorType, SensorData sensorData, GraphScale graphScale);
 
 
 

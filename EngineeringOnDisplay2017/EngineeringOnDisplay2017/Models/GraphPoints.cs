@@ -5,9 +5,11 @@ using System.Threading.Tasks;
 
 namespace EngineeringOnDisplay2017.Models
 {
-    public class Graph
+    public class GraphPoints
     {
 
-        public IEnumerable<GraphPoint> Points { get; set; }
+        public IEnumerable<DateTime> XAxis { get; set; }
+        public IEnumerable<float> YAxis { get; set; }
     }
 }
+

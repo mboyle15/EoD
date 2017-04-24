@@ -25,8 +25,6 @@ namespace EngineeringOnDisplay2017.Controllers
             _sensorRepository = sensorRepository;
         }
 
-
-
         /**
          * Get a full graph website with standard layout
          * @returns the call to Graph(layoutHidden) to not hide the layout
@@ -52,11 +50,6 @@ namespace EngineeringOnDisplay2017.Controllers
 
             return View();
         }
-
-
-
-
-
 
         //create a test view for the sensors
         public IActionResult SensorTest()

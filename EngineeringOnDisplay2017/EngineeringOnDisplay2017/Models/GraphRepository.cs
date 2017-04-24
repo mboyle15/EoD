@@ -24,12 +24,12 @@ namespace EngineeringOnDisplay2017.Models
             Building = context.BuildingRecords.Where(b => b.Acronym == "EIB").FirstOrDefault();
         }
 
-       /**
-       * Get all graph points in table for given sensor. According to the building, default EIB
-       * @param   sensor      Enum for the sensor type (Electrical, NaturalGas, Water, OutsideTemperature)
-       * @return              GraphPoint model to return a matched properties of time and value.
-       **/
-        public IEnumerable<GraphPoint> GetGraphPoints(SensorType sensorType)
+        /**
+        * Get all graph points in table for given sensor. According to the building, default EIB
+        * @param   sensor      Enum for the sensor type (Electrical, NaturalGas, Water, OutsideTemperature)
+        * @return              GraphPoints is a class that takes the parameter points and splits into to independent arrays.  
+        **/
+        public GraphPoints GetGraphPoints(SensorType sensorType)
         {
             var context = getSenorRecordCollectionFromDb(sensorType);
 
@@ -43,7 +43,7 @@ namespace EngineeringOnDisplay2017.Models
                     Y_Value = record.Amount
                 };
 
-            return results.Take(20);
+            return convertEnumerableToGraphPoints(results.Take(20));
         }
 
         /**
@@ -53,10 +53,14 @@ namespace EngineeringOnDisplay2017.Models
          * @param   end         DateTime for the end of the time frame. (Less than or equal)
          * @param   sensorData  Enum for type of data returned (amount "runing total" or change "how much amount changes in time period")
          * @param   pointScale  Enum for scaling the amount of points returned. (All, Hour, Day, Week, Month or Year) 
-         * @return              GraphPoint model to return a matched properties of time and value.
+         * @return              GraphPoints is a class that takes the parameter points and splits into to independent arrays.  
          **/
-        public IEnumerable<GraphPoint> GetGraphPoints(DateTime start, DateTime end, SensorType sensorType, SensorData sensorData, GraphScale graphScale)
+        public GraphPoints GetGraphPoints(DateTime start, DateTime end, SensorType sensorType, SensorData sensorData, GraphScale graphScale)
         {
+
+            //holds the results for the context
+            var points = Enumerable.Empty<GraphPoint>();
+
             //get the context for the sensorType
             var context = getSenorRecordCollectionFromDb(sensorType);
 
@@ -70,17 +74,18 @@ namespace EngineeringOnDisplay2017.Models
                     switch(graphScale)
                     {
                         case GraphScale.All:
-                            return Enumerable.Empty<GraphPoint>();
+                            points = getGraphAmountAll(start, end, context);
+                            break;
                         case GraphScale.Hour:
-                            return Enumerable.Empty<GraphPoint>();
+                            
                         case GraphScale.Day:
-                            return Enumerable.Empty<GraphPoint>();
+                           
                         case GraphScale.Week:
-                            return Enumerable.Empty<GraphPoint>();
+                           
                         case GraphScale.Month:
-                            return Enumerable.Empty<GraphPoint>();
+                            
                         case GraphScale.Year:
-                            return Enumerable.Empty<GraphPoint>();
+                            break;
                     }
                 }
                 //check for sensor is set to change
@@ -90,24 +95,54 @@ namespace EngineeringOnDisplay2017.Models
                     switch (graphScale)
                     {
                         case GraphScale.All:
-                            return Enumerable.Empty<GraphPoint>();
+                            
                         case GraphScale.Hour:
-                            return Enumerable.Empty<GraphPoint>();
+                            
                         case GraphScale.Day:
-                            return Enumerable.Empty<GraphPoint>();
+                            
                         case GraphScale.Week:
-                            return Enumerable.Empty<GraphPoint>();
+                            
                         case GraphScale.Month:
-                            return Enumerable.Empty<GraphPoint>();
+                            
                         case GraphScale.Year:
-                            return Enumerable.Empty<GraphPoint>();
+                            break;
                     }
 
                 }
             }
-            //return an empty graph if context failed to load or query not currently supported
-            return Enumerable.Empty<GraphPoint>();
+            //return a converted IEnumerable to a GraphPoint object
+            return convertEnumerableToGraphPoints(points);
+        }
 
+
+
+        /**
+         * Converts a IEnumerable<GraphPoints> into a single class with arrays for both xAxis and yAxis. Needed to make Ajax easier.
+         * @param   points  IEnumerable<GraphPoint> A list of points generated by a query method. 
+         * @return          GraphPoints is a class that takes the parameter points and splits into to independent arrays.  
+         **/
+        private GraphPoints convertEnumerableToGraphPoints(IEnumerable<GraphPoint> points)
+        {
+            //check if IEnumerable is empty. 
+            if(!points.Any())
+            {
+                //if empty then return an empty 
+                return new GraphPoints();
+            }
+            //list of x and y points to put into the GraphPoints.  Splits up each axis.
+            var xPoints = new List<DateTime>();
+            var yPoints = new List<float>();
+
+
+            //loop through the IEnumerable to do the separation.
+            foreach (var point in points)
+            {
+                xPoints.Add(point.X_Value);
+                yPoints.Add(point.Y_Value);
+            }
+
+            //return a filled graph points class.  
+            return new GraphPoints() { XAxis = xPoints, YAxis = yPoints };
         }
 
         /**
