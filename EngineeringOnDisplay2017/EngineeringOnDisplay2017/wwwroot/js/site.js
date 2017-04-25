@@ -10,10 +10,10 @@ $("document").ready(function () {
         //first time loading the page then load homepage
         loadContent("Home");
         setupBtnsSensorSelect();
+
+        
     }
-
 });
-
 
 //load the sensor home content
 function loadContent(content) {
@@ -25,6 +25,24 @@ function loadContent(content) {
         //check if it is the home page which does not need all the chart buttons
         if(content !== "Home")
         {
+            
+           
+            try {
+                chartProperties = JSON.parse($("#chartProperties").attr("data-chart-prop"));
+            }
+            catch (e) {
+                //set a default chartProperties string
+                chartProperties = {
+                    datasetLabel: "Default Dataset - error with Parse",
+                    backgroundColor: "rgba(255,0,0,1)",
+                    borderColor: "rgba(255,0,0,1)",
+                    labelString: "Default",
+                    xAxis: [],
+                    yAxis: [],
+                    globalChart: null
+                };
+            }
+
             //must be a chart page.  set up charting buttons
             setupBtnsSensorData();  //setup the demand and usage buttons
             setupBtnsSensorScale(); //setup the scale buttons
@@ -61,7 +79,6 @@ function setupBtnsSensorData() {
      
         var btn = $(this);
 
-        
         //check for current class on button
         if (!btn.hasClass("current")) //if not then
         {
@@ -150,27 +167,15 @@ function drawChart() {
 
 
 //setup a global chart object to handel the chart properties
-var chartProperties = {
-    datasetLable: "Electrical Usage",
-    backgroundColor: "rgba(255,255,0,.5)",
-    borderColor: "rgba(255,255,0,1)",
-    labelString: "kiloWatt Hours",
-    xAxis: [],
-    yAxis: [],
-    globalChart: null
-}; 
+var chartProperties = {}; 
 
 
 
 //draw a graph for given canvas tag
 function drawChartSingleData() {
 
-
-    alert("debug");
+    //alert("debug");
     //alert(moment("20170424T0432", "YYYYMMDDThhmm"));
-
-
-    
 
     var myChart = $("#sensorChartHere");
 
@@ -185,7 +190,7 @@ function drawChartSingleData() {
             datasets:
             [
                 {
-                    label: chartProperties.datasetLable,
+                    label: chartProperties.datasetLabel,
                     data: chartProperties.yAxis,
                     lineTension: 0,
                     backgroundColor: chartProperties.backgroundColor,

@@ -7,7 +7,6 @@
 
   <ItemGroup>
     <Content Include="wwwroot\js\site.js" />
-    <Content Include="wwwroot\js\SensorDisplay.min.js" />
     <Content Include="wwwroot\js\site.min.js" />
   </ItemGroup>
   <ItemGroup>

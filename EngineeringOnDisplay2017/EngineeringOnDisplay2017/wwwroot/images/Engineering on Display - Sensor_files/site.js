@@ -64,7 +64,7 @@ function reskinChartInterface(sensorType)
 
 
 ////returns the lable for each dataset in the graph 
-//function getDatasetLable(canvasTag) {
+//function getdatasetLabel(canvasTag) {
 //    var canvas = $(canvasTag);
 //    var sensor = canvas.attr("data-graph-sensor"); 
 //    var dataType = canvas.attr("data-graph-data");
@@ -76,7 +76,7 @@ function reskinChartInterface(sensorType)
 
 //setup a global chart object to handel the chart properties
 var chartProperties = {
-    datasetLable: "Electrical Usage",
+    datasetLabel: "Electrical Usage",
     backgroundColor: "rgba(255,255,0,.5)",
     borderColor: "rgba(255,255,0,1)",
     labelString: "kiloWatt Hours",
@@ -138,7 +138,7 @@ function drawGraphForCanvas(canvasTag) {
             datasets:
             [
                 {
-                    label: chartProperties.datasetLable,
+                    label: chartProperties.datasetLabel,
                     data: chartProperties.yAxis,
                     lineTension: 0,
                     backgroundColor: chartProperties.backgroundColor,
