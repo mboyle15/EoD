@@ -45,6 +45,7 @@ namespace EngineeringOnDisplay2017.Controllers
 
             return Json(_graphRepository.GetGraphPoints(start, end, sensor, dataType, scale));
         }
+
         public IActionResult LoadContent(string name)
         {
             return View(name);

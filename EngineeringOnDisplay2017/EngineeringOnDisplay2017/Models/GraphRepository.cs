@@ -111,7 +111,7 @@ namespace EngineeringOnDisplay2017.Models
                 }
             }
             //return a converted IEnumerable to a GraphPoint object
-            return convertEnumerableToGraphPoints(points);
+            return convertEnumerableToGraphPoints(points.Take(25));
         }
 
 
@@ -130,16 +130,17 @@ namespace EngineeringOnDisplay2017.Models
                 return new GraphPoints();
             }
             //list of x and y points to put into the GraphPoints.  Splits up each axis.
-            var xPoints = new List<DateTime>();
+            var xPoints = new List<string>();
             var yPoints = new List<float>();
 
 
             //loop through the IEnumerable to do the separation.
             foreach (var point in points)
             {
-                xPoints.Add(point.X_Value);
+                xPoints.Add(point.X_Value.ToString("h:mmtt"));
                 yPoints.Add(point.Y_Value);
             }
+     
 
             //return a filled graph points class.  
             return new GraphPoints() { XAxis = xPoints, YAxis = yPoints };

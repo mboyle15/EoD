@@ -9,9 +9,10 @@
     Semester: Spring 2017
     Course: CSCE 470 
 ********************************************************************************************/
-body{
-    margin:0;
-    background-color:black;
+body {
+    margin: 0;
+    background-color: black;
+    font-family: Arial;
 }
 
 #siteWrapper {
@@ -147,10 +148,14 @@ chartTopRow{
 #graphContainer {
     width: 1200px;
     height: 500px;
-    background-color:aqua;
+
     position:absolute;
 }
 
+#sensorChartHere {
+    width: 100%;
+    height:100%;
+}
 
 
  

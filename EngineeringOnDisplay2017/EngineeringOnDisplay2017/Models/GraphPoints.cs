@@ -8,7 +8,7 @@ namespace EngineeringOnDisplay2017.Models
     public class GraphPoints
     {
 
-        public IEnumerable<DateTime> XAxis { get; set; }
+        public IEnumerable<string> XAxis { get; set; }
         public IEnumerable<float> YAxis { get; set; }
     }
 }
