@@ -1,0 +1,40 @@
+﻿@{
+    Layout = "";
+}
+
+
+
+<div id="chartArea">
+    
+    <div class="displayInline">
+        <div class="chartTopRow">
+            <h1>Electrical Usage - Engineering & Industry Building</h1>
+            <div>
+                <button class="sensorNavBtn" data-graph-data="Amount">Usage<br />(kWH)</button>
+                <button class="sensorNavBtn" data-graph-data="Change">Demand<br />(kW)</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="chartMiddleRow">
+        <div class="chartScrollBtns">
+            <button id="chartScrollLeftbtn" class="sensorNavBtn"><img src="~/images/angleLeft.png" /></button>
+        </div>
+        <div id="graphContainer">
+            <canvas id="sensorChartHere"></canvas>
+         
+        </div>
+        <div class="chartScrollBtns">
+            <button id="chartScrollRightBtn" class="sensorNavBtn"><img src="~/images/angleRight.png" /></button>
+        </div>
+    </div>
+
+    <div class="chartScaleBtns">
+        <button class="sensorNavBtn" data-graph-scale="All">All</button>
+        <button class="sensorNavBtn" data-graph-scale="Hour">Hour</button>
+        <button class="sensorNavBtn" data-graph-scale="Day">Day</button>
+        <button class="sensorNavBtn" data-graph-scale="Month">Month</button>
+        <button class="sensorNavBtn" data-graph-scale="Year">Year</button>
+    </div>
+    <div id="chartData" data-graph-sensor="Electrical" data-graph-start="2017-04-16T02:30:20" data-graph-end="2017-04-20T02:30:20" data-graph-scale="All" data-graph-data="Amount"></div>
+</div>

@@ -45,18 +45,16 @@ namespace EngineeringOnDisplay2017.Controllers
     public class HomeController : Controller
     {
 
-
+        //this is the Admin Page that will launch the other pages
         public IActionResult Index()
         {
+
             return View();
         }
 
-        public IActionResult Contact()
-        {
-            return View();
-        }
 
-        public IActionResult About()
+        //this is where the 
+        public IActionResult Sensors()
         {
             return View();
         }

@@ -1,63 +1,27 @@
 ﻿<!DOCTYPE html>
+
 <html>
 <head>
-    <title>Engineering on Dispay - @ViewBag.Title</title>
-    <meta charset="utf-8" />
 
-  
-   <link rel="stylesheet" href="~/lib/bootswatch/spacelab/bootstrap.min.css"/>
-   <link rel="stylesheet" href="~/lib/font-awesome/css/font-awesome.min.css" />
-   <link rel="stylesheet" href="~/css/site.css" />
+    <meta charset="utf-8" />
+    
+    <link rel="stylesheet" href="~/lib/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+
+
+    <title>Engineering on Display - @ViewBag.Title</title>
 </head>
 <body>
 
-
-    <div class="row">
-        <div class="col-xs-12">
-            <div id="UaaHead">
-                
-            </div>
+    <div id="siteWrapper">
+        <div id="uaaHead"><img src="~/images/CollegeOfEngineering-GG-Rvrs.png"/></div>
+        <div>
+            @RenderBody()
         </div>
     </div>
 
-    <div class="row">
-        <div class="container-fluid">
-
-            <!--Navagation fro the site on the left side-->
-            <div id="sidebar" class="col-xs-2">
-                <ul class="nav">
-                    <li><a asp-controller="Home" asp-action="Index" class="btn btn-primary btn-">Home</a></li>
-                    <li><a asp-controller="Home" asp-action="About" class="btn btn-primary">About</a></li>
-                    <li><a asp-controller="Home" asp-action="Contact" class="btn btn-primary">Contact</a></li>
-                </ul>
-                <hr />
-                <span>Sensors</span>
-                <ul class="nav">
-                    <li><a asp-controller="Sensor" asp-action="ElectricalUsage" class="btn btn-success btn-lg"><i class="fa fa-bolt" aria-hidden="true"></i> Electrical Usage</a></li>
-                    <li><a asp-controller="Sensor" asp-action="WaterUsage" class="btn btn-success btn-lg"><i class="fa fa-tint" aria-hidden="true"></i> Water Usage</a></li>
-                    <li><a asp-controller="Sensor" asp-action="NatGasUsage" class="btn btn-success btn-lg"><i class="fa fa-fire" aria-hidden="true"></i> Natural Gas Usage</a></li>
-                    <li><a asp-controller="Sensor" asp-action="OutsideTemperature" class="btn btn-success btn-lg"><i class="fa fa-thermometer-full" aria-hidden="true"></i> Outside Temperature</a></li>
-                    <li><a asp-controller="PassiveAds" asp-action="PassiveAds" class="btn btn-success btn-lg"><i class="fa fa-hand-paper-o" aria-hidden="true"></i> Passive Ad Test</a></li>
-                    <li><a asp-controller="Sensor" asp-action="SensorTest" class="btn btn-success btn-lg"><i class="fa fa-hand-paper-o" aria-hidden="true"></i> Sensor Test</a></li>
-                </ul>
-
-            </div>
-
-            <!--View is rendered in this space.  It is offset from the side of the container by 2 so it sits out from the menu-->
-            <div id="wrapper" class="col-xs-10 col-xs-offset-2">
-                
-
-                @RenderBody()
-
-            </div>
-        </div>
-    </div>
-
-    <!--Javascript imports-->
     <script type="text/javascript" src="~/lib/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
-    @RenderSection("scripts", false)
     <script type="text/javascript" src="~/js/site.js"></script>
-
 </body>
 </html>

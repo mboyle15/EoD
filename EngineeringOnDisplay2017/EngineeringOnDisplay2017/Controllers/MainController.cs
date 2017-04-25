@@ -10,12 +10,12 @@ using EngineeringOnDisplay2017.Models;
 
 namespace EngineeringOnDisplay2017.Controllers
 {
-    //[Route("api/[controller]")]
-    public class GraphController : Controller
+
+    public class MainController : Controller
     {
         private IGraphRepository _graphRepository;
 
-        public GraphController(IGraphRepository graphRepository)
+        public MainController(IGraphRepository graphRepository)
         {
             _graphRepository = graphRepository;
         }
@@ -44,6 +44,16 @@ namespace EngineeringOnDisplay2017.Controllers
             //{ scale: $canvasTag.attr("data-graph-scale")}
 
             return Json(_graphRepository.GetGraphPoints(start, end, sensor, dataType, scale));
+        }
+        public IActionResult LoadContent(string name)
+        {
+            return View(name);
+        }
+
+
+        public IActionResult SensorTest()
+        {
+            return View();
         }
     }
 }

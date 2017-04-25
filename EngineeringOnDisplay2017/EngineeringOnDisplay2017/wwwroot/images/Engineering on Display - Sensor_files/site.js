@@ -4,16 +4,14 @@
 * Run setup functions once DOM has loaded
 *
 **/
-$("document").ready(function () {
+$("document").ready(function()
+{
+
+    //first time loading the page then load homepage
+    loadContent("Home");
 
 
-    if ($("#main").text() === "")
-    { 
-        //first time loading the page then load homepage
-        loadContent("Home");
-    }
-
-    setupBtnsSensorSelect();
+    //setupBtnsSensorSelect();
     //setupBtnsSensorData();
     //getGraphPoints($("#chartArea div canvas"));
 });
@@ -33,6 +31,7 @@ function changeCanvas(canvas, attribute, value) {
         var canvasToChange = $(this); //cache the wrapped jquery varable
         if (canvasToChange.attr(attribute) !== value) { //checkt to see if it empty
             canvasToChange.attr(attribute, value); //set the attribute in the canvas
+            reskinChartInterface(attribute); //change all the buttons to match the graph
             getGraphPoints(canvasToChange);
         }
     });
@@ -43,14 +42,7 @@ function setupBtnsSensorSelect() {
 
     //add a click action listener to the select buttons
     $("#sidebar button.sensorNavBtn").click(function () {
-        var button = $(this);
-
-        //check if this is already the current page loaded 
-        if (!button.hasClass("current")) { //if not then
-            loadContent(button.attr("data-graph-sensor"));  //load new page
-            $("#sidebar button.current").removeClass("current"); //remove current from the previous button
-            button.addClass("current"); //add current to the button pressed
-        }
+        
     });
 }
 
