@@ -21,7 +21,6 @@ namespace EngineeringOnDisplay2017.Controllers
         }
 
         //get graphPoints(SensorType) will return all Points in database for given sensor type
-        [HttpGet]
         public JsonResult GetAllGraphPoints()
         {
             Response.ContentType = "application/json";
@@ -29,32 +28,29 @@ namespace EngineeringOnDisplay2017.Controllers
             return Json(_graphRepository.GetGraphPoints(SensorType.Electrical));
         }
 
-        /**
-         * 
-         * 
-         * 
-         **/
+        //get a custom set of graph points from the parameters
         public JsonResult GetGraphPoints(DateTime start, DateTime end, SensorType sensor, SensorData dataType, GraphScale scale)
         {
-            //JQuery Request parameters
-            //{ start: $canvasTag.attr("data-graph-start")},
-            //{ end: $canvasTag.attr("data-graph-end")},
-            //{ sensor: $canvasTag.attr("data-graph-sensor")},
-            //{ dataType: $canvasTag.attr("data-graph-data")},
-            //{ scale: $canvasTag.attr("data-graph-scale")}
-
             return Json(_graphRepository.GetGraphPoints(start, end, sensor, dataType, scale));
         }
+        
+        //get the image tags for the full sized images
+        public IActionResult LoadSlideShowFull()
+        {
+            //todo, create an repository that pulls the img tags from a database.
+            return View();
+        }
 
+        public IActionResult LoadSlideShowNavBar()
+        {
+            //todo, create a repository that pulls imgs from database.
+            return View();
+        }
+
+        //get the main display page for the charting part of website
         public IActionResult LoadContent(string name)
         {
             return View(name);
-        }
-
-
-        public IActionResult SensorTest()
-        {
-            return View();
         }
     }
 }
