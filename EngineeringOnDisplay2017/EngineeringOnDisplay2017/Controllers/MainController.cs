@@ -29,9 +29,9 @@ namespace EngineeringOnDisplay2017.Controllers
         }
 
         //get a custom set of graph points from the parameters
-        public JsonResult GetGraphPoints(DateTime start, DateTime end, SensorType sensor, SensorData dataType, GraphScale scale)
+        public JsonResult GetGraphPoints(DateTime end, int numTicks, SensorType sensor, SensorData dataType, GraphScale scale)
         {
-            return Json(_graphRepository.GetGraphPoints(start, end, sensor, dataType, scale));
+            return Json(_graphRepository.GetGraphPoints(end, numTicks, sensor, dataType, scale));
         }
         
         //get the image tags for the full sized images

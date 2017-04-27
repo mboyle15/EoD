@@ -16,7 +16,7 @@
 
     <div class="chartMiddleRow">
         <div class="chartScrollBtns">
-            <button id="chartScrollLeftbtn" class="sensorNavBtn"><img src="~/images/angleLeft.png" /></button>
+            <button id="chartScrollLeftBtn" class="sensorNavBtn"><img src="~/images/angleLeft.png" /></button>
         </div>
 
         <div id="graphContainer">
@@ -27,15 +27,16 @@
         </div>
     </div>
 
-    <div class="chartScaleBtns">
-        <button class="sensorNavBtn current" data-graph-scale="All" data-graph-title="All">All</button>
+    <div id="chartScaleBtns">
+        <button class="sensorNavBtn current" data-graph-scale="All" data-graph-title="All">15min</button>
         <button class="sensorNavBtn" data-graph-scale="Hour" data-graph-title="Hourly">Hour</button>
         <button class="sensorNavBtn" data-graph-scale="Day" data-graph-title="Daily">Day</button>
         <button class="sensorNavBtn" data-graph-scale="Month" data-graph-title="Monthly">Month</button>
         <button class="sensorNavBtn" data-graph-scale="Year" data-graph-title="Yearly">Year</button>
     </div>
-    <div id="chartData" data-graph-sensor="Electrical" data-graph-start="2017-04-13T02:30:20" data-graph-end="2017-04-14T02:30:20" data-graph-scale="All" data-graph-data="Amount" data-graph-building="Engineering & Industry Building"></div>
+    <div id="chartData" data-graph-sensor="Electrical" data-graph-end="2017-04-14T02:30:20" data-graph-ticks="20" data-graph-scale="All" data-graph-data="Amount" data-graph-building="Engineering & Industry Building"></div>
     <div id="chartProperties" data-chart-prop='{
+                                                    "chartType": "line",
                                                     "datasetLabel": "Electrical Usage",
                                                     "backgroundColor": "rgba(255,255,0,.7)",
                                                     "borderColor": "rgba(255,255,0,1)",

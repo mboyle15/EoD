@@ -33,6 +33,7 @@ function loadContent(content) {
             catch (e) {
                 //set a default chartProperties string
                 chartProperties = {
+                    chartType: "line",
                     datasetLabel: "Default Dataset - error with Parse",
                     backgroundColor: "rgba(255,0,0,1)",
                     borderColor: "rgba(255,0,0,1)",
@@ -94,8 +95,6 @@ function setupBtnsSensorData() {
         //check for current class on button
         if (!btn.hasClass("current")) //if not then
         {
-
-
             $("#sensorDataBtns button.current").removeClass("current"); //find and remove current of buttons
             btn.addClass("current"); //add current to this one
         }
@@ -105,11 +104,85 @@ function setupBtnsSensorData() {
 
 //setup the scale feature at the bottom of the graph (All, Hour, Day, Month, Year)
 function setupBtnsSensorScale() {
-    //to do
+    
+    //select the sensor data buttons
+    $("#chartScaleBtns button").click(function () {
+
+        var btn = $(this);
+
+        //check for current class on button
+        if (!btn.hasClass("current")) //if not then
+        {
+            $("#chartScaleBtns button.current").removeClass("current"); //find and remove current of buttons
+            btn.addClass("current"); //add current to this one
+        }
+        changeChartData("data-graph-scale", btn.attr("data-graph-scale")); //change the chart data and refresh the chart.
+    });
+
+
 }
 
 //setup the scroll buttons for the graph
 function setupBtnsSensorScroll() {
+    $("#chartScrollLeftBtn").click(function () {
+
+        var chartDataDiv = $("#chartData"); //cache a wrapped copy of the chart data div
+        var newEnd = 0;
+
+        switch (chartDataDiv.attr("data-graph-Scale"))
+        {
+            case "All":
+                newEnd = moment(chartDataDiv.attr("data-graph-end")).subtract(1, 'hour').format("YYYY-MM-DDThh:mm");
+                break;
+            case "Hour":
+                newEnd = moment(chartDataDiv.attr("data-graph-end")).subtract(1, 'hour').format("YYYY-MM-DDThh:mm");
+                break;
+            case "Day":
+                newEnd = moment(chartDataDiv.attr("data-graph-end")).subtract(1, 'day').format("YYYY-MM-DDThh:mm");
+                break;
+            case "Month":
+                newEnd = moment(chartDataDiv.attr("data-graph-end")).subtract(1, 'month').format("YYYY-MM-DDThh:mm");
+                break;
+            case "Year":
+                newEnd = moment(chartDataDiv.attr("data-graph-end")).subtract(1, 'year').format("YYYY-MM-DDThh:mm");
+                break;
+        }
+
+        
+     
+        changeChartData("data-graph-end", newEnd);
+
+
+
+    });
+
+    $("#chartScrollRightBtn").click(function () {
+        var chartDataDiv = $("#chartData"); //cache a wrapped copy of the chart data div
+        var newEnd = 0;
+
+        switch (chartDataDiv.attr("data-graph-Scale")) {
+            case "All":
+                newEnd = moment(chartDataDiv.attr("data-graph-end")).add(1, 'hour').format("YYYY-MM-DDThh:mm");
+                break;
+            case "Hour":
+                newEnd = moment(chartDataDiv.attr("data-graph-end")).add(1, 'hour').format("YYYY-MM-DDThh:mm");
+                break;
+            case "Day":
+                newEnd = moment(chartDataDiv.attr("data-graph-end")).add(1, 'day').format("YYYY-MM-DDThh:mm");
+                break;
+            case "Month":
+                newEnd = moment(chartDataDiv.attr("data-graph-end")).add(1, 'month').format("YYYY-MM-DDThh:mm");
+                break;
+            case "Year":
+                newEnd = moment(chartDataDiv.attr("data-graph-end")).add(1, 'year').format("YYYY-MM-DDThh:mm");
+                break;
+        }
+
+        changeChartData("data-graph-end", newEnd);
+
+    });
+
+
     //to do
 }
 
@@ -154,8 +227,8 @@ function getChartPoints() {
 
     $.getJSON('/Main/GetGraphPoints',
         {
-            start: chartDataDiv.attr('data-graph-start'),
             end: chartDataDiv.attr("data-graph-end"),
+            numTicks: chartDataDiv.attr("data-graph-ticks"),
             sensor: chartDataDiv.attr("data-graph-sensor"),
             dataType: chartDataDiv.attr("data-graph-data"),
             scale: chartDataDiv.attr("data-graph-scale")
@@ -174,6 +247,22 @@ function getGraphPointsWithStats() {
 
 //Wrapper function that chooses the correct chart to draw
 function drawChart() {
+    if (chartProperties.globalChart !== undefined && chartProperties.globalChart !== null)
+    {
+        //create an new canvas
+        $("#graphContainer").html('<canvas id="sensorChartHere" ></canvas>');
+
+        //chartProperties.globalChart.destroy();
+    }
+
+    if (chartProperties.xAxis.length < 15)
+    {
+        chartProperties.chartType = 'bar';
+    }
+    else {
+        chartProperties.chartType = 'line';
+    }
+
     drawChartSingleData(); //hard coded for now
 }
 
@@ -181,18 +270,16 @@ function drawChart() {
 //setup a global chart object to handel the chart properties
 var chartProperties = {}; 
 
-
-
 //draw a graph for given canvas tag
 function drawChartSingleData() {
 
-    //alert("debug");
-    //alert(moment("20170424T0432", "YYYYMMDDThhmm"));
+
+
 
     var myChart = $("#sensorChartHere");
 
-    var foo = new Chart(myChart, {
-        type: 'line',
+    chartProperties.globalChart = new Chart(myChart, {
+        type: chartProperties.chartType,
         responsive: false,
         maintainAspectRatio: false,
         data:
@@ -219,21 +306,49 @@ function drawChartSingleData() {
             {
                 yAxes:
                 [{
+                    
                     scaleLabel:
                     {
                         display: true,
-                        labelString: chartProperties.labelString
+                        labelString: chartProperties.labelString,
+                        fontStyle: "bold",
+                        fontSize: 20
+                    },
+                    ticks: {
+                        fontStyle:"bold"
                     }
                 }],
                 xAxes:
                 [{  
                     ticks:
                     {
+                        autoSkip: true,
                         maxTicksLimit: 10,
-                        //callback: function (value) {
-                        //    return Date.parse(value).toLocaleString();
-                        //}
+                       // maxRotation: 0,
+                        //minRotation: 0,
+                        fontSize: 16,
+                        fontStyle:"bold"
                     },
+
+                    type: "time",
+                    display: true,
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Date'
+                    },
+                    time: {
+              
+                        displayFormats: {
+                            'minute': 'h:mmA',
+                            'hour': 'h:mmA',
+                            'day': 'MMM D',
+                            'week': 'MMM YYYY',
+                            'month': 'MMM YYYY',
+                            'quarter': "YYYY",
+                            'year': 'YYYY'
+                        }
+                    }
+                    
                 }]
             }
         }

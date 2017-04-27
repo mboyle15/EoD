@@ -12,17 +12,7 @@ namespace EngineeringOnDisplay2017.Models
         GraphPoints GetGraphPoints(SensorType sensorType);
 
 
-        GraphPoints GetGraphPoints(DateTime start, DateTime end, SensorType sensorType, SensorData sensorData, GraphScale graphScale);
-
-
-
-
-
-
-
-
-
-
+        GraphPoints GetGraphPoints(DateTime end, int numTicks, SensorType sensorType, SensorData sensorData, GraphScale graphScale);
 
 
         BuildingRecord Building { get; set; }

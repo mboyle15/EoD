@@ -112,7 +112,7 @@ body {
 
 
 /*setting up buttons around the chart*/ 
-.chartScaleBtns .sensorNavBtn{
+#chartScaleBtns .sensorNavBtn{
     margin:175px 0 0 150px;
 }
 .chartScrollBtns button{
@@ -165,11 +165,14 @@ chartTopRow{
     height: 500px;
 
     position:absolute;
+
 }
 
 #sensorChartHere {
     width: 100%;
     height:100%;
+
+
 }
 
 
