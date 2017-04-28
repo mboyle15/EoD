@@ -1,7 +1,7 @@
 ﻿/*****************************************************************************************
     File: site.css  
-    Purpose: The final overriding css for the website. 
-    Project: Engineering on Dispay
+    Purpose: CSS for the Primary user display for showing Charts of data.   
+    Project: Engineering on Display
 
     Authors:  Terrance Mount, Andew Smart, Martin Boyle
     College: University of Alaska, Anchorage
@@ -9,12 +9,19 @@
     Semester: Spring 2017
     Course: CSCE 470 
 ********************************************************************************************/
+
+/*set some simple body level styles.  Black signifies outside the target display window. */
 body {
     margin: 0;
     background-color: black;
     font-family: Arial;
 }
 
+
+/***********************************************************
+    Main layout for page
+-----------------------------------------------------------*/
+/*Container for the bodyWrapper and the slideshow*/
 #siteWrapper {
     width: 1600px;
     height: 900px;
@@ -22,12 +29,23 @@ body {
     overflow:hidden;
 }
 
+/*Container for the UAA Head, Sidebar and Main sections*/
 #bodyWrapper{
     height:800px;
     position:relative;
     overflow: hidden;
-} 
+}
 
+/*container for the UAA heading at the top of the page*/
+#uaaHead {
+    height: 75px;
+    width: 100%;
+    background-image: url('../images/headrtxtr-3.png');
+    background-color: #207b66;
+    margin: 0;
+}
+
+/*Container to hold the sensor select buttons for the page*/
 #sidebar {
     padding-top: 10px;
     background: #2a2c36;
@@ -38,8 +56,7 @@ body {
     height: 100%;
 }
 
-
-
+/*container to hold the main content of page (graph, etc.)*/
 #main {
     padding: 10px 0 0 10px;
     background: #eee;
@@ -49,37 +66,72 @@ body {
     height: 100%;
 }
 
+/*container for the slideshow nav bar at bottom of page*/
+#ss-nav {
+    height: 100px;
+    width: 1600px;
+   
+    position: relative;
+    padding: 0; /*take out any margin*/
+    margin: 0; /*take out any padding*/
+}
+/*==================END OF SECTION=========================*/
 
-#uaaHead {
-    height: 75px;
-    width:100%;
-    background-image: url('../images/headrtxtr-3.png');
-    background-color: #207b66;
-    margin: 0;
+/***********************************************************
+    UAA head section additional css
+------------------------------------------------------------*/
+
+#uaaHead img {
+    height: 65px;
+    margin: 5px 0 0 25px;
+}
+/*==================END OF SECTION=========================*/
+
+/***********************************************************
+    Slide show Navagation bar at the bottom of the page
+----------------------------------------------------------*/
+
+
+/*controls the sliding of the nav slots back and forth*/
+#ss-nav-slider {
+    margin-left: 700px; /*default center value corrosponding with the center of the   will change with js to move slider*/ 
+
 }
 
-#uaaHead img{
-    height:65px;
-    margin:5px 0 0 25px;
+/*group styling for each slot in the nav bar*/
+.ss-nav-slot {
+    width: 200px;
+    height: 100px;
+    padding:5px 0 0 0;
+    margin:0 0 0 0;
+    display:inline-block;
+    /*background-color:red;*/
+    
 }
 
-/*Advertising nav bar for the main display*/
-#SlideShowNavBar {
-    height:100px;
-    width:1600px;
-    background-color:aqua;
-} 
-
-.scrollTable {
-    height: 500px;
-    overflow: auto;
+.ss-nav-slot img{
+    margin-left:auto;
+    margin-right:auto;
+    height:90px;
+    display:block;
 }
 
-
-.normalGraph {
-    width: 1000px;
-    height: 400px;
+/*A empty border over the middle slot to indicate */
+.ss-nav-slot-select {
+    border: 3px solid yellow;
+    position:absolute;
+    height:94px;
+    width:194px;
+    top:800px;
+    left:0;
+    z-index:1;
+    margin-left:700px; /*Center of the page for 1600 px wide*/
 }
+/*==================END OF SECTION=========================*/
+
+/***********************************************************
+    Sidebar home and sensor buttons setup.
+------------------------------------------------------------/
 
 /*sidebar buttons for selecting what sensor.*/  
 .sensorNavBtn {
@@ -93,6 +145,7 @@ body {
     text-align:center;
 }
 
+/*Highlight the button if current or moused over*/
 .sensorNavBtn:hover, .current{
     background: #ffcc33;
     text-decoration: none;
@@ -108,9 +161,11 @@ body {
 #sidebar .sensorNavBtn img {
     height: 60px;
 }
+/*==================END OF SECTION=========================*/
 
-
-
+/***********************************************************
+    Sidebar home and sensor buttons setup.
+------------------------------------------------------------/
 /*setting up buttons around the chart*/ 
 #chartScaleBtns .sensorNavBtn{
     margin:175px 0 0 150px;
@@ -174,6 +229,6 @@ chartTopRow{
 
 
 }
-
+/*==================END OF SECTION=========================*/
 
  

@@ -5,14 +5,25 @@
 $("document").ready(function () {
 
 
+    //test to see if main is empty meaning it needs content
     if ($("#main").text() === "")
     { 
         //first time loading the page then load homepage
         loadContent("Home");
         setupBtnsSensorSelect();
-
-        
     }
+    //load the slideshow if there is a div for it.  Call other needed functions to make it work.
+    var slideShow = $("#slideShow");
+    if (slideShow.text() === "")
+    {
+        $.get("/Main/LoadSlideShow", function (data) {
+            slideShow.html(data);
+        }, 'html')
+            .fail(function () {
+                slideShow.html('<h3>Slide Show Unavailble</h3> <p>Please check with administrator</p>');
+            });
+    }
+    
 });
 
 //load the sensor home content
@@ -56,17 +67,6 @@ function loadContent(content) {
     
 }
 
-
-//Load the full version of the slide show to the right
-function loadSlideShowFull() {
-
-}
-
-function loadSlideShowNavBar() {
-
-    //var navbar = $(#)
-
-}
 
 //setup the sensor select buttons (Electrical, Water, Naturalgas, OutsideTemperature)) , page refresh
 function setupBtnsSensorSelect() {

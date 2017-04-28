@@ -35,18 +35,13 @@ namespace EngineeringOnDisplay2017.Controllers
         }
         
         //get the image tags for the full sized images
-        public IActionResult LoadSlideShowFull()
+        public IActionResult LoadSlideShow()
         {
             //todo, create an repository that pulls the img tags from a database.
-            return View();
+            return View("SlideShow");
         }
 
-        public IActionResult LoadSlideShowNavBar()
-        {
-            //todo, create a repository that pulls imgs from database.
-            return View();
-        }
-
+    
         //get the main display page for the charting part of website
         public IActionResult LoadContent(string name)
         {
