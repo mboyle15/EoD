@@ -18,6 +18,7 @@ $("document").ready(function () {
     {
         $.get("/Main/LoadSlideShow", function (data) {
             slideShow.html(data);
+            setupSlideShow();
         }, 'html')
             .fail(function () {
                 slideShow.html('<h3>Slide Show Unavailble</h3> <p>Please check with administrator</p>');
@@ -67,6 +68,74 @@ function loadContent(content) {
     
 }
 
+
+//setup slideShow events
+function setupSlideShow() {
+    $("#ss-scroll-left button").click(function () {
+        moveToNextSlide(-1); 
+    });
+
+    $("#ss-scroll-right button").click(function () {
+        moveToNextSlide(1);
+    });
+
+    //default attribute for current slot to slider
+    $("#ss-full-slider").attr("data-current-slot", 0);
+
+
+    //slide show hide center display is clicked (slideshow image)
+    $("#ss-full").on("click", "img", function () {
+        $("#ss-full, #ss-scroll div").toggleClass("ss-scroll-down");
+    });
+
+
+    //slide show 
+    $("#ss-nav-slider").on("click", "div",function () {
+        $("#ss-full, #ss-scroll div").removeClass("ss-scroll-down");
+        $("#ss-full-slider").attr("data-current-slot", $(this).index());
+        updateSlideshow();
+    });
+
+    $("#ss-nav-slot-select").click(function () {
+        $("#ss-full, #ss-scroll div").toggleClass("ss-scroll-down");
+    });
+
+}
+
+//go to the next slide.  -1 for left, +1 for right
+function moveToNextSlide(direction) {
+    var slider = $("#ss-full-slider");
+    var slotNum = parseInt(slider.attr("data-current-slot")) + direction;
+    var numSlots = $("#ss-full-slider div").length;
+
+    //alert(slotNum);
+    if (slotNum < 0){
+        slider.attr("data-current-slot", numSlots - 1);
+    }
+    else if (slotNum >= numSlots){
+        slider.attr("data-current-slot", 0);
+    }
+    else {
+        slider.attr("data-current-slot", slotNum);
+    }
+    updateSlideshow();
+}
+
+
+function updateSlideshow()
+{
+    var slider = $("#ss-full-slider");
+    slider.css("margin-left", slider.attr("data-current-slot") * -1600);
+
+    $("#ss-nav-slider").css("margin-left", slider.attr("data-current-slot") * -200 + 700);
+}
+
+
+
+//toggle slideShow on/off... moves the slide show up for on and down for off.
+function toggleSlideShow() {
+
+}
 
 //setup the sensor select buttons (Electrical, Water, Naturalgas, OutsideTemperature)) , page refresh
 function setupBtnsSensorSelect() {

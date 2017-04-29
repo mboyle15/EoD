@@ -70,8 +70,9 @@ body {
 #ss-nav {
     height: 100px;
     width: 1600px;
-   
     position: relative;
+    background-color:black;
+    z-index:3;
     padding: 0; /*take out any margin*/
     margin: 0; /*take out any padding*/
 }
@@ -95,18 +96,18 @@ body {
 /*controls the sliding of the nav slots back and forth*/
 #ss-nav-slider {
     margin-left: 700px; /*default center value corrosponding with the center of the   will change with js to move slider*/ 
-
+    transition: margin-left ease 2s;
+    
 }
 
 /*group styling for each slot in the nav bar*/
 .ss-nav-slot {
     width: 200px;
     height: 100px;
-    padding:5px 0 0 0;
-    margin:0 0 0 0;
-    display:inline-block;
-    /*background-color:red;*/
-    
+    padding: 5px 0 0 0;
+    margin: 0 0 0 0;
+    display: inline-block;
+
 }
 
 .ss-nav-slot img{
@@ -116,22 +117,100 @@ body {
     display:block;
 }
 
+
 /*A empty border over the middle slot to indicate */
-.ss-nav-slot-select {
+#ss-nav-slot-select {
     border: 3px solid yellow;
     position:absolute;
     height:94px;
     width:194px;
     top:800px;
     left:0;
-    z-index:1;
+    z-index:4;
     margin-left:700px; /*Center of the page for 1600 px wide*/
 }
 /*==================END OF SECTION=========================*/
 
+
+/***********************************************************
+    Slide Show Full Images setup.  
+------------------------------------------------------------*/
+
+
+
+#ss-full {
+    position: absolute;
+    left: 0;
+    z-index: 1;
+    transition: all ease 2s;
+}
+
+.ss-full-top{
+    top:0;
+}
+/*Div designed to slide up/down/right/left that holds the full slideshow images*/
+/*Note Margin-left: will be changed dynamicaly by js.*/
+/*Default state is off the main side of screen.  Over 1600 px*/
+#ss-full-slider {
+    margin-left: 0;
+    display: flex;
+    transition: all ease 2s;
+
+}
+
+/*Div for holding a slideshow picture*/
+.ss-full-slot{
+    width:1600px;
+    height:800px;
+    overflow:hidden;
+}
+
+/*styling the slideshow image*/
+.ss-full-slot img {
+    width:100%;
+    display:block;
+
+}
+
+.ss-scroll-btn {
+    top: 0;
+    position: absolute;
+    z-index: 2;
+    opacity: .2;
+    transition: all ease 2s;
+}
+
+.ss-scroll-down{
+    top:800px;
+}
+
+#ss-scroll-right {
+    left:1300px;
+}
+#ss-scroll-left{
+    left:0;
+} 
+#ss-scroll div button img{
+    width:50px;
+    margin:0;
+    padding:0;
+}
+
+#ss-scroll div button {
+    width: 300px; 
+    height: 800px;
+    background-color:transparent;
+    border:none;
+}
+
+
+
+/*==================END OF SECTION=========================*/
+
+
 /***********************************************************
     Sidebar home and sensor buttons setup.
-------------------------------------------------------------/
+------------------------------------------------------------*/
 
 /*sidebar buttons for selecting what sensor.*/  
 .sensorNavBtn {
