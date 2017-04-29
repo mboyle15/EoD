@@ -65,39 +65,44 @@ function loadContent(content) {
 
 
     }, "html");
+    //start the timer for user input
     
 }
 
-
 //setup slideShow events
 function setupSlideShow() {
-    $("#ss-scroll-left button").click(function () {
-        moveToNextSlide(-1); 
-    });
-
-    $("#ss-scroll-right button").click(function () {
-        moveToNextSlide(1);
-    });
-
     //default attribute for current slot to slider
     $("#ss-full-slider").attr("data-current-slot", 0);
 
-
-    //slide show hide center display is clicked (slideshow image)
-    $("#ss-full").on("click", "img", function () {
-        $("#ss-full, #ss-scroll div").toggleClass("ss-scroll-down");
+    //click event for the left scroll button on slide show
+    $("#ss-scroll-left button").click(function () {
+        moveToNextSlide(-1);
+        startUserTimer();
     });
 
+    //click event for the right scroll button on slide show
+    $("#ss-scroll-right button").click(function () {
+        moveToNextSlide(1);
+        startUserTimer();
+    });
 
-    //slide show 
+    //click event for hiding the slideshow (slideshow image)
+    $("#ss-full").on("click", "img", function () {
+        toggleSlideShow();
+        startUserTimer();
+    });
+
+    //user clicked the a non current slideshow nav image
     $("#ss-nav-slider").on("click", "div",function () {
         $("#ss-full, #ss-scroll div").removeClass("ss-scroll-down");
         $("#ss-full-slider").attr("data-current-slot", $(this).index());
         updateSlideshow();
     });
 
+    //clicked on the current slot yellow div.  hide and show the slide show
     $("#ss-nav-slot-select").click(function () {
-        $("#ss-full, #ss-scroll div").toggleClass("ss-scroll-down");
+        toggleSlideShow();
+        startUserTimer();
     });
 
 }
@@ -121,7 +126,46 @@ function moveToNextSlide(direction) {
     updateSlideshow();
 }
 
+//start a slideshow timer and
+function startSlideShowTimer()
+{
+    //clear out the user timer and set to null
+    if (timers.user !== null){
+        clearTimeout(timers.user);
+        timers.user = null;
+    }
 
+    //activate the slideshow
+    activateSlideShow();
+
+    //set a timer for the slideshow
+    timers.slideShow = setTimeout(function () {
+        //go to next slide
+        moveToNextSlide(1);
+        startSlideShowTimer();
+    }, 5000);    
+}
+
+function startUserTimer(timeInSeconds) {
+
+    //clear out slide show timer
+    if (timers.slideShow !== null) {
+        clearTimeout(timers.slideShow);
+        timers.slideShow = null;
+    }
+
+    //clear out old user timer, user click on something
+    if (timers.user !== null) {
+        clearTimeout(timers.user);
+    }
+
+    timers.user = setTimeout(function () {
+        startSlideShowTimer();
+    }, 10000);
+
+}
+
+//take what ever is in the data-current-slot and apply offsets for both sliders
 function updateSlideshow()
 {
     var slider = $("#ss-full-slider");
@@ -130,11 +174,19 @@ function updateSlideshow()
     $("#ss-nav-slider").css("margin-left", slider.attr("data-current-slot") * -200 + 700);
 }
 
+//turns the slide show on
+function activateSlideShow() {
+    $("#ss-full, #ss-scroll div").removeClass("ss-scroll-down");
+}
 
+//turns slideshow off
+function deactivateSlideShow() {
+    $("#ss-full, #ss-scroll div").addClass("ss-scroll-down");
+}
 
 //toggle slideShow on/off... moves the slide show up for on and down for off.
 function toggleSlideShow() {
-
+    $("#ss-full, #ss-scroll div").toggleClass("ss-scroll-down");
 }
 
 //setup the sensor select buttons (Electrical, Water, Naturalgas, OutsideTemperature)) , page refresh
@@ -187,8 +239,6 @@ function setupBtnsSensorScale() {
         }
         changeChartData("data-graph-scale", btn.attr("data-graph-scale")); //change the chart data and refresh the chart.
     });
-
-
 }
 
 //setup the scroll buttons for the graph
@@ -217,12 +267,7 @@ function setupBtnsSensorScroll() {
                 break;
         }
 
-        
-     
         changeChartData("data-graph-end", newEnd);
-
-
-
     });
 
     $("#chartScrollRightBtn").click(function () {
@@ -263,6 +308,15 @@ function updateTitleFromBtns() {
 //changes the chart title to Loading Chart...
 function updateTitleToLoadingChart() {
     //to do 
+
+
+
+
+    //still need to do
+
+
+
+
 }
 
 //change the chart data if changed and redraw chart with title and Data Div updates
@@ -272,20 +326,17 @@ function changeChartData(attribute, value) {
     if (chartDataDiv.attr(attribute) !== value) {
         updateTitleToLoadingChart(); //Change the title to reflect a chart is being loaded
         chartDataDiv.attr(attribute, value); //change the data div
-        setupChartPropertiesFromDataDiv(); //this changes the chart properties to reflect button press
+        //setupChartPropertiesFromDataDiv(); //this changes the chart properties to reflect button press
         updateChart(); //update the chart with an Ajax call
         updateTitleFromBtns(); //change the title for the new chart
     }
 }
 
-//setup the chart properties from the div on page
-function setupChartPropertiesFromDataDiv(){
-    //to do
-}
-
 //wrapper function that chooses which type of chart points to get (single or multiple)
 function updateChart() {
     getChartPoints();
+    startUserTimer();
+    deactivateSlideShow();
 }
 
 //Ajax request to Graph controller for the points corrosponding to the graph.  
@@ -335,15 +386,8 @@ function drawChart() {
     drawChartSingleData(); //hard coded for now
 }
 
-
-//setup a global chart object to handel the chart properties
-var chartProperties = {}; 
-
 //draw a graph for given canvas tag
 function drawChartSingleData() {
-
-
-
 
     var myChart = $("#sensorChartHere");
 
@@ -424,3 +468,12 @@ function drawChartSingleData() {
     });
 
 }
+
+//setup a global chart object to handel the chart properties
+var chartProperties = {};
+
+//global varables for times
+var timers = {
+    slideShow: null,
+    user: null
+};
