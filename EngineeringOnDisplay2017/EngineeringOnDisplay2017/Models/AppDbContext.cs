@@ -37,7 +37,7 @@ namespace EngineeringOnDisplay2017.Models
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)  { }
 
         //db connection for the building records
-        public DbSet<BuildingRecord> BuildingRecords { get; set; }
+        public DbSet<BuildingRecord> BuildingRecords { get; set; } 
 
         //db connection for the electrical records
         public DbSet<ElectricalRecord> ElectricalRecords { get; set; }
@@ -50,5 +50,7 @@ namespace EngineeringOnDisplay2017.Models
 
         //db connection for outside temperature records
         public DbSet<OutsideTempRecord> OutsideTempRecords { get; set; }
+
+        public DbSet<Slide> Slides { get; set; }
     }
 } 
