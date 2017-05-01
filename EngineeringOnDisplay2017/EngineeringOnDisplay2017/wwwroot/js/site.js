@@ -62,6 +62,9 @@ function loadContent(content) {
             setupBtnsSensorScroll(); //setup the scroll buttons
             updateChart(); //draw the chart first time
         }
+        else { //loading the sensor home
+            startUserTimer();
+        }
 
 
     }, "html");
@@ -96,6 +99,7 @@ function setupSlideShow() {
     $("#ss-nav-slider").on("click", "div",function () {
         $("#ss-full, #ss-scroll div").removeClass("ss-scroll-down");
         $("#ss-full-slider").attr("data-current-slot", $(this).index());
+        startUserTimer();
         updateSlideshow();
     });
 
@@ -104,6 +108,8 @@ function setupSlideShow() {
         toggleSlideShow();
         startUserTimer();
     });
+
+    $("#ss-nav, #ss-full, #ss-nav-slot-select").
 
 }
 
