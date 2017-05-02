@@ -1,4 +1,4 @@
-﻿// Site.js
+﻿// public_display.js
 /**
 * Run setup functions once DOM has loaded
 **/
@@ -109,7 +109,7 @@ function setupSlideShow() {
         startUserTimer();
     });
 
-    $("#ss-nav, #ss-full, #ss-nav-slot-select").
+    //$("#ss-nav, #ss-full, #ss-nav-slot-select").
 
 }
 

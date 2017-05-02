@@ -8,6 +8,7 @@ using EngineeringOnDisplay2017.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 
+
 namespace EngineeringOnDisplay2017
 {
     public class Startup

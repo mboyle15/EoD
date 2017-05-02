@@ -1,20 +1,41 @@
 ﻿@{
-    ViewBag.Title = "Sensor";
+    Layout = "";
 }
 
+<!DOCTYPE html>
 
-<div id="siteWrapper">
-    <div id="bodyWrapper">
-        <div id="uaaHead"><img src="~/images/CollegeOfEngineering-GG-Rvrs.png" /></div>
-        <div id="sidebar">
-            <!--Sidebar Sensor navagation-->
-            <button class="sensorNavBtn current" data-graph-sensor="Home" type="button"><img src="~/images/Home.png" /><br />Home</button>
-            <button class="sensorNavBtn" data-graph-sensor="Electrical" type="button"><img src="~/images/Electrical.png" /><br />Electrical</button>
-            <button class="sensorNavBtn" data-graph-sensor="NaturalGas" type="button"><img src="~/images/NaturalGas.png" /><br />Natural Gas</button>
-            <button class="sensorNavBtn" data-graph-sensor="Water" type="button"><img src="~/images/Water.png" /><br />Water</button>
-            <button class="sensorNavBtn" data-graph-sensor="OutsideTemperature" type="button"><img src="~/images/OutsideTemperature.png" /><br />Temperature</button>
+<html>
+<head>
+
+    <meta charset="utf-8" />
+
+    <link rel="stylesheet" href="~/lib/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="~/css/public_display.css" />
+
+
+    <title>Engineering on Display</title>
+</head>
+<body>
+    <div id="siteWrapper">
+        <div id="bodyWrapper">
+            <div id="uaaHead"><img src="~/images/CollegeOfEngineering-GG-Rvrs.png" /></div>
+            <div id="sidebar">
+                <!--Sidebar Sensor navagation-->
+                <button class="sensorNavBtn current" data-graph-sensor="Home" type="button"><img src="~/images/Home.png" /><br />Home</button>
+                <button class="sensorNavBtn" data-graph-sensor="Electrical" type="button"><img src="~/images/Electrical.png" /><br />Electrical</button>
+                <button class="sensorNavBtn" data-graph-sensor="NaturalGas" type="button"><img src="~/images/NaturalGas.png" /><br />Natural Gas</button>
+                <button class="sensorNavBtn" data-graph-sensor="Water" type="button"><img src="~/images/Water.png" /><br />Water</button>
+                <button class="sensorNavBtn" data-graph-sensor="OutsideTemperature" type="button"><img src="~/images/OutsideTemperature.png" /><br />Temperature</button>
+            </div>
+            <div id="main"></div>
         </div>
-        <div id="main"></div>
+        <div id="slideShow"></div>
     </div>
-    <div id="slideShow"></div>
-</div>
+
+    <script type="text/javascript" src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/lib/moment/min/moment.min.js"></script>
+    <script type="text/javascript" src="~/lib/Chart-js/dist/Chart.min.js"></script>
+    <script type="text/javascript" src="~/js/public_display.js"></script>
+</body>
+</html>
