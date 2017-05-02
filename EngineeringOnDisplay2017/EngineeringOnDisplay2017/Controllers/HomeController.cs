@@ -17,21 +17,10 @@
  * Class:  CSCE 470 Capstone  Spring 2017
  * College: University of Alaska, Anchorage
  * ***********************************************************************************************************************
- * File: HomeController.cs
+ * File: AdminController.cs
  * Purpose: to run the home, about and contact views of the website.    
  * 
- * *******************************************************************************************************************
- * Methods
- * 
- *  
- *  *************************************************************************************************************
- * Change Log
- * 
- * **************************************************************************************************************
- * ToDo
- * 
- *  Write out puedo-code methods in the section above and create views as needed.  
- * **************************************************************************************************************/
+ * *******************************************************************************************************************/
 
 
 using System;
@@ -42,7 +31,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EngineeringOnDisplay2017.Controllers
 {
-    public class HomeController : Controller
+    public class AdminController : Controller
     {
 
         //this is the Admin Page that will launch the other pages
@@ -52,11 +41,5 @@ namespace EngineeringOnDisplay2017.Controllers
             return View();
         }
 
-
-        //this is where the 
-        public IActionResult Sensors()
-        {
-            return View();
-        }
     }
 }

@@ -1,5 +1,5 @@
 ﻿/*****************************************************************************************
-    File: site.css  
+    File: main.css  
     Purpose: CSS for the Primary user display for showing Charts of data.   
     Project: Engineering on Display
 
@@ -25,14 +25,14 @@ body {
 #siteWrapper {
     width: 1600px;
     height: 900px;
-    position:absolute;
-    overflow:hidden;
+    position: absolute;
+    overflow: hidden;
 }
 
 /*Container for the UAA Head, Sidebar and Main sections*/
-#bodyWrapper{
-    height:800px;
-    position:relative;
+#bodyWrapper {
+    height: 800px;
+    position: relative;
     overflow: hidden;
 }
 
@@ -71,8 +71,8 @@ body {
     height: 100px;
     width: 1600px;
     position: relative;
-    background-color:black;
-    z-index:3;
+    background-color: black;
+    z-index: 3;
     padding: 0; /*take out any margin*/
     margin: 0; /*take out any padding*/
 }
@@ -95,9 +95,8 @@ body {
 
 /*controls the sliding of the nav slots back and forth*/
 #ss-nav-slider {
-    margin-left: 700px; /*default center value corrosponding with the center of the   will change with js to move slider*/ 
+    margin-left: 700px; /*default center value corrosponding with the center of the   will change with js to move slider*/
     transition: margin-left ease 2s;
-    
 }
 
 /*group styling for each slot in the nav bar*/
@@ -107,27 +106,26 @@ body {
     padding: 5px 0 0 0;
     margin: 0 0 0 0;
     display: inline-block;
-
 }
 
-.ss-nav-slot img{
-    margin-left:auto;
-    margin-right:auto;
-    height:90px;
-    display:block;
-}
+    .ss-nav-slot img {
+        margin-left: auto;
+        margin-right: auto;
+        height: 90px;
+        display: block;
+    }
 
 
 /*A empty border over the middle slot to indicate */
 #ss-nav-slot-select {
     border: 3px solid yellow;
-    position:absolute;
-    height:94px;
-    width:194px;
-    top:800px;
-    left:0;
-    z-index:4;
-    margin-left:700px; /*Center of the page for 1600 px wide*/
+    position: absolute;
+    height: 94px;
+    width: 194px;
+    top: 800px;
+    left: 0;
+    z-index: 4;
+    margin-left: 700px; /*Center of the page for 1600 px wide*/
 }
 /*==================END OF SECTION=========================*/
 
@@ -145,8 +143,8 @@ body {
     transition: all ease 2s;
 }
 
-.ss-full-top{
-    top:0;
+.ss-full-top {
+    top: 0;
 }
 /*Div designed to slide up/down/right/left that holds the full slideshow images*/
 /*Note Margin-left: will be changed dynamicaly by js.*/
@@ -155,22 +153,20 @@ body {
     margin-left: 0;
     display: flex;
     transition: all ease 2s;
-
 }
 
 /*Div for holding a slideshow picture*/
-.ss-full-slot{
-    width:1600px;
-    height:800px;
-    overflow:hidden;
+.ss-full-slot {
+    width: 1600px;
+    height: 800px;
+    overflow: hidden;
 }
 
-/*styling the slideshow image*/
-.ss-full-slot img {
-    width:100%;
-    display:block;
-
-}
+    /*styling the slideshow image*/
+    .ss-full-slot img {
+        width: 100%;
+        display: block;
+    }
 
 .ss-scroll-btn {
     top: 0;
@@ -180,27 +176,29 @@ body {
     transition: all ease 2s;
 }
 
-.ss-scroll-down{
-    top:800px;
+.ss-scroll-down {
+    top: 800px;
 }
 
 #ss-scroll-right {
-    left:1300px;
+    left: 1300px;
 }
-#ss-scroll-left{
-    left:0;
-} 
-#ss-scroll div button img{
-    width:50px;
-    margin:0;
-    padding:0;
+
+#ss-scroll-left {
+    left: 0;
+}
+
+#ss-scroll div button img {
+    width: 50px;
+    margin: 0;
+    padding: 0;
 }
 
 #ss-scroll div button {
-    width: 300px; 
+    width: 300px;
     height: 800px;
-    background-color:transparent;
-    border:none;
+    background-color: transparent;
+    border: none;
 }
 
 
@@ -212,7 +210,7 @@ body {
     Sidebar home and sensor buttons setup.
 ------------------------------------------------------------*/
 
-/*sidebar buttons for selecting what sensor.*/  
+/*sidebar buttons for selecting what sensor.*/
 .sensorNavBtn {
     border-radius: 12px;
     font-family: Arial;
@@ -221,15 +219,15 @@ body {
     background: #207b66;
     padding: 10px 20px 10px 20px;
     text-decoration: none;
-    text-align:center;
+    text-align: center;
 }
 
-/*Highlight the button if current or moused over*/
-.sensorNavBtn:hover, .current{
-    background: #ffcc33;
-    text-decoration: none;
-    color:black;
-}
+    /*Highlight the button if current or moused over*/
+    .sensorNavBtn:hover, .current {
+        background: #ffcc33;
+        text-decoration: none;
+        color: black;
+    }
 
 #sidebar .sensorNavBtn {
     height: 115px;
@@ -237,40 +235,42 @@ body {
     margin: 22px 0 0 25px;
 }
 
-#sidebar .sensorNavBtn img {
-    height: 60px;
-}
+    #sidebar .sensorNavBtn img {
+        height: 60px;
+    }
 /*==================END OF SECTION=========================*/
 
 /***********************************************************
     Sidebar home and sensor buttons setup.
 ------------------------------------------------------------/
-/*setting up buttons around the chart*/ 
-#chartScaleBtns .sensorNavBtn{
-    margin:175px 0 0 150px;
-}
-.chartScrollBtns button{
-    width:75px;
-    height:200px;
-    padding:0;
-    margin:125px 0 0 0;
-}
-.chartScrollBtns button img {
-    width:50px;
-    margin:0;
-}
-#chartScrollRightBtn{
-    margin-left:1200px;
+/*setting up buttons around the chart*/
+#chartScaleBtns .sensorNavBtn {
+    margin: 175px 0 0 150px;
 }
 
-chartTopRow{
-    position:relative;
+.chartScrollBtns button {
+    width: 75px;
+    height: 200px;
+    padding: 0;
+    margin: 125px 0 0 0;
 }
 
-.chartTopRow h1{
-    display:inline;
-    margin-left:100px;
+    .chartScrollBtns button img {
+        width: 50px;
+        margin: 0;
+    }
 
+#chartScrollRightBtn {
+    margin-left: 1200px;
+}
+
+chartTopRow {
+    position: relative;
+}
+
+.chartTopRow h1 {
+    display: inline;
+    margin-left: 100px;
 }
 
 .chartTopRow div {
@@ -279,34 +279,30 @@ chartTopRow{
     position: absolute;
 }
 
-.chartTopRow button{
+.chartTopRow button {
     margin-left: 50px;
-    font-size:medium;
+    font-size: medium;
 }
 
-.chartMiddleRow{
-    position:relative;
-    margin-top:25px;
+.chartMiddleRow {
+    position: relative;
+    margin-top: 25px;
 }
 
-.chartMiddleRow div {
-    display: inline;
-    margin-right: 0;
-}
+    .chartMiddleRow div {
+        display: inline;
+        margin-right: 0;
+    }
 
 #graphContainer {
     width: 1200px;
     height: 500px;
-
-    position:absolute;
-
+    position: absolute;
 }
 
 #sensorChartHere {
     width: 100%;
-    height:100%;
-
-
+    height: 100%;
 }
 /*==================END OF SECTION=========================*/
 
