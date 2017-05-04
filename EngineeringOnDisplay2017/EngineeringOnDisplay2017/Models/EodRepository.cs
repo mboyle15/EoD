@@ -74,6 +74,11 @@ namespace EngineeringOnDisplay2017.Models
                 numTicks = DEFAULT_NUM_TICKS;
             }
 
+            if(end > DateTime.Now)
+            {
+                end = DateTime.Now;
+            }
+
             //holds the results for the context
             var points = Enumerable.Empty<GraphPoint>();
 

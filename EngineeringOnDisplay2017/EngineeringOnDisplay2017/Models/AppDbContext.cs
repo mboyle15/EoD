@@ -63,7 +63,7 @@ namespace EngineeringOnDisplay2017.Models
         {
             base.OnConfiguring(optionsBuilder);
 
-            optionsBuilder.UseSqlServer(_config["ConnectionStrings:LocalEoDConnection"]);
+            optionsBuilder.UseSqlServer(_config["ConnectionStrings:RemoteConnection"]);
         }
     }
 

@@ -5,10 +5,12 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace EngineeringOnDisplay2017.Migrations
 {
-    public partial class Identity : Migration
+    public partial class Init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+           
+
             migrationBuilder.CreateTable(
                 name: "Slides",
                 columns: table => new
@@ -16,9 +18,9 @@ namespace EngineeringOnDisplay2017.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     FullUrl = table.Column<string>(nullable: true),
-                    Order = table.Column<int>(nullable: true),
+                    Order = table.Column<int>(nullable: false),
                     ThumbUrl = table.Column<string>(nullable: true),
-                    TimeSeconds = table.Column<int>(nullable: true)
+                    TimeSeconds = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -77,6 +79,9 @@ namespace EngineeringOnDisplay2017.Migrations
                 {
                     table.PrimaryKey("PK_AspNetUserTokens", x => new { x.UserId, x.LoginProvider, x.Name });
                 });
+
+          
+           
 
             migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
@@ -204,9 +209,11 @@ namespace EngineeringOnDisplay2017.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+
             migrationBuilder.DropTable(
                 name: "Slides");
 
+         
             migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
 
@@ -221,6 +228,8 @@ namespace EngineeringOnDisplay2017.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+          
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

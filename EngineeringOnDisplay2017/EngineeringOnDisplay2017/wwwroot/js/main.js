@@ -158,7 +158,7 @@ function startUserTimer(timeInSeconds) {
 
     timers.user = setTimeout(function () {
         startSlideShowTimer();
-    }, 10000);
+    }, 120000);
 
 }
 
@@ -372,7 +372,7 @@ function drawChart() {
         //chartProperties.globalChart.destroy();
     }
 
-    if (chartProperties.xAxis.length < 15)
+    if (chartProperties.xAxis.length < 5)
     {
         chartProperties.chartType = 'bar';
     }

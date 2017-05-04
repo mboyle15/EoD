@@ -52,8 +52,9 @@ namespace EngineeringOnDisplay2017.Controllers
         public JsonResult GetAllGraphPoints()
         {
             Response.ContentType = "application/json";
+            var result = _eodRepository.GetGraphPoints(SensorType.Electrical);
 
-            return Json(_eodRepository.GetGraphPoints(SensorType.Electrical));
+            return Json(result);
         }
 
         //get a custom set of graph points from the parameters
