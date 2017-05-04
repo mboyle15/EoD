@@ -36,19 +36,21 @@ namespace EngineeringOnDisplay2017.Models
                 await _userManager.CreateAsync(user, "P@ssw0rd!");
             }
 
-            //if(!_context.Slides.Any())
-            //{
-            //    var slides = new List<Slide>()
-            //    {
-            //        new Slide(){ FullUrl="~/images/passiveAdsImages/test1.jpg", ThumbUrl="~/images/passiveAdsImages/thumbnails/tb-test1.jpg", Order=0, TimeSeconds=2},
-            //        new Slide(){ FullUrl="~/images/passiveAdsImages/test2.jpg", ThumbUrl="~/images/passiveAdsImages/thumbnails/tb-test2.jpg", Order=1, TimeSeconds=3},
-            //        new Slide(){ FullUrl="~/images/passiveAdsImages/test3.jpg", ThumbUrl="~/images/passiveAdsImages/thumbnails/tb-test3.jpg", Order=2, TimeSeconds=2},
-            //        new Slide(){ FullUrl="~/images/passiveAdsImages/test4.jpg", ThumbUrl="~/images/passiveAdsImages/thumbnails/tb-test4.jpg", Order=3, TimeSeconds=4},
-            //        new Slide(){ FullUrl="~/images/passiveAdsImages/test5.jpg", ThumbUrl="~/images/passiveAdsImages/thumbnails/tb-test5.jpg", Order=4, TimeSeconds=5},
-           
-            //    };
-            //    _context.AddRange(slides);
-            //}
+            if (!_context.Slides.Any())
+            {
+                var slides = new List<Slide>()
+                {
+                    new Slide(){ FullUrl="~/images/passiveAdsImages/test1.jpg", ThumbUrl="~/images/passiveAdsImages/thumbnails/tb-test1.jpg", Order=0, TimeSeconds=2},
+                    new Slide(){ FullUrl="~/images/passiveAdsImages/test2.jpg", ThumbUrl="~/images/passiveAdsImages/thumbnails/tb-test2.jpg", Order=1, TimeSeconds=3},
+                    new Slide(){ FullUrl="~/images/passiveAdsImages/test3.jpg", ThumbUrl="~/images/passiveAdsImages/thumbnails/tb-test3.jpg", Order=2, TimeSeconds=2},
+                    new Slide(){ FullUrl="~/images/passiveAdsImages/test4.jpg", ThumbUrl="~/images/passiveAdsImages/thumbnails/tb-test4.jpg", Order=3, TimeSeconds=4},
+                    new Slide(){ FullUrl="~/images/passiveAdsImages/test5.jpg", ThumbUrl="~/images/passiveAdsImages/thumbnails/tb-test5.jpg", Order=4, TimeSeconds=5},
+
+                };
+                _context.AddRange(slides);
+
+                await _context.SaveChangesAsync();
+            }
 
             //BuildingRecord testBuilding = null;
             //long numRecordsToGenerate = 175200;
@@ -154,7 +156,7 @@ namespace EngineeringOnDisplay2017.Models
             //    }
 
             //}
-           await _context.SaveChangesAsync();
+            //await _context.SaveChangesAsync();
         }
     }
 }

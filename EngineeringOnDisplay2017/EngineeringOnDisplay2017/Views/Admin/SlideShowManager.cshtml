@@ -8,37 +8,37 @@
 <div class="row">
     <div class="col-md-8">
         <form method="post">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Order</th>
-                    <th>Image</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Order</th>
+                        <th>Image</th>
+                        <th>Time</th>
+                        <th>Alt Text</th>
+                    </tr>
+                </thead>
 
-            @foreach (var row in Model)
-            {
-                <tr>
-                    <th scope="row">@row.Order</th>
+                @foreach (var row in Model)
+                {
+                    <tr> 
+                        <th scope="row">
+                            <input readonly="readonly" size="3" type="text" name="Order" value=@row.Order />
+                            <button class="btn btn-primary"><i class="fa fa-arrow-up"></i></button>
+                            <button class="btn btn-primary"><i class="fa fa-arrow-down"></i></button>
+                        </th>
+                        <td><img src=@Url.Content(row.ThumbUrl) /></td>
 
-                    <td><img src=@Url.Content(row.ThumbUrl) /></td>
-                    <td><input type="text" name=@row.Id value=@row.TimeSeconds /></td>
-                    <td><button class="btn btn-primary">Up</button><br/></td>
-                    <td><button class="btn btn-primary">Down</button></td>
-                    <td><button class="btn btn-danger">Delete</button></td>
-                </tr>
-            }
-            <tr>
-                <td></td>
-                <td></td>
-                <td><input type="submit" class="btn btn-success" value="Update Time" /></td>
-                <td></td>
-                <td></td>
-                <td></td>
-
-            </tr>
-        </table>
-    </form>
+                        <td>
+                            <input type="hidden" name="Id" value=@row.Id />
+                            <input type="text" name="TimeSeconds" value=@row.TimeSeconds />
+                        </td>
+                        <td><input type="text" name="AltText" value="@row.AltText" /></td>
+                        <td><button class="btn btn-danger">Delete</button></td>
+                    </tr>
+                }
+            </table>
+            <input type="submit" class="btn btn-success" value="Update Database" />
+            <a class="btn btn-info" asp-controller="Admin" asp-action="AddSlides">Add Slide</a>
+        </form>
     </div>
 </div>

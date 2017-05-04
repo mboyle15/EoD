@@ -57,3 +57,10 @@ body {
 /*div.container-fluid div{
     background-color:red;
 }*/
+
+th input{
+    border:none;
+    background-color:transparent;
+
+    
+}

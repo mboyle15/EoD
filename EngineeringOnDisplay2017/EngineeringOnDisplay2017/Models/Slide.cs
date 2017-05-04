@@ -14,5 +14,6 @@ namespace EngineeringOnDisplay2017.Models
         public string ThumbUrl { get; set; } //url for the thumbnail image
         public int TimeSeconds { get; set; } //how long the slide will be displayed
         public int Order { get; set; }  //order in the slide show.  Will work best if it does not have duplicates
+        public string AltText { get; set; } //to hold the alt text for the image
     }
 }
