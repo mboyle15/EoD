@@ -12,15 +12,11 @@
 
 /*set some simple body level styles.  Black signifies outside the target display window. */
 body {
-    margin: 0;
-    background-color: black;
+    /*margin: 0;
+    background-color: black;*/
     font-family: Arial;
 }
 
-
-/***********************************************************
-    Main layout for page
------------------------------------------------------------*/
 
 
 /*container for the UAA heading at the top of the page*/
@@ -31,14 +27,20 @@ body {
     background-color: #207b66;
 }
 
+/*Icon for UAA College of Engineering*/
+#uaaHead img {
+    height: 65px;
+    margin: 5px 0 0 25px;
+}
+
 /*Container to hold the sensor select buttons for the page*/
 #sidebar {
     padding-top: 10px;
     background: #2a2c36;
     color: #eee;
-    /*position: absolute;*/
+    position: absolute;
     overflow: auto;
-    width: 200px;
+
     height: 100%;
 }
 
@@ -46,20 +48,12 @@ body {
 #main {
     padding: 10px 0 0 10px;
     background: #eee;
-    /*position: absolute;*/
-    margin-left: 200px;
+    position: absolute;
+    /*margin-left: 200px;*/
     height: 100%;
+    width:100%;
 }
 
-
-
-/***********************************************************
-    UAA head section additional css
-------------------------------------------------------------*/
-
-#uaaHead img {
-    height: 65px;
-    margin: 5px 0 0 25px;
-}
-/*==================END OF SECTION=========================*/
-
+/*div.container-fluid div{
+    background-color:red;
+}*/

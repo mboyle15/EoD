@@ -31,13 +31,13 @@ namespace EngineeringOnDisplay2017.Controllers
 
     public class MainController : Controller
     {
-        private IGraphRepository _graphRepository;
+        private IEodRepository _eodRepository;
 
         
         //constructor that gets a copy of the graphRespository
-        public MainController(IGraphRepository graphRepository)
+        public MainController(IEodRepository eodRepository)
         {
-            _graphRepository = graphRepository;
+            _eodRepository = eodRepository;
         }
         
 
@@ -53,13 +53,13 @@ namespace EngineeringOnDisplay2017.Controllers
         {
             Response.ContentType = "application/json";
 
-            return Json(_graphRepository.GetGraphPoints(SensorType.Electrical));
+            return Json(_eodRepository.GetGraphPoints(SensorType.Electrical));
         }
 
         //get a custom set of graph points from the parameters
         public JsonResult GetGraphPoints(DateTime end, int numTicks, SensorType sensor, SensorData dataType, GraphScale scale)
         {
-            return Json(_graphRepository.GetGraphPoints(end, numTicks, sensor, dataType, scale));
+            return Json(_eodRepository.GetGraphPoints(end, numTicks, sensor, dataType, scale));
         }
         
         //get the image tags for the full sized images

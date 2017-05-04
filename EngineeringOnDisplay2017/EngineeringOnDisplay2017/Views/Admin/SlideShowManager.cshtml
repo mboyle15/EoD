@@ -1,0 +1,44 @@
+﻿@model IEnumerable<EngineeringOnDisplay2017.Models.Slide>
+@{
+    Layout = "AdminLayout";
+}
+
+<h2>Slide Show Manager</h2>
+
+<div class="row">
+    <div class="col-md-8">
+        <form method="post">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Order</th>
+                    <th>Image</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            @foreach (var row in Model)
+            {
+                <tr>
+                    <th scope="row">@row.Order</th>
+
+                    <td><img src=@Url.Content(row.ThumbUrl) /></td>
+                    <td><input type="text" name=@row.Id value=@row.TimeSeconds /></td>
+                    <td><button class="btn btn-primary">Up</button><br/></td>
+                    <td><button class="btn btn-primary">Down</button></td>
+                    <td><button class="btn btn-danger">Delete</button></td>
+                </tr>
+            }
+            <tr>
+                <td></td>
+                <td></td>
+                <td><input type="submit" class="btn btn-success" value="Update Time" /></td>
+                <td></td>
+                <td></td>
+                <td></td>
+
+            </tr>
+        </table>
+    </form>
+    </div>
+</div>

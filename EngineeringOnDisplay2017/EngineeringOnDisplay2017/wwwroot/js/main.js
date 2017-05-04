@@ -4,37 +4,23 @@
 **/
 $("document").ready(function () {
 
-
-    //test to see if main is empty meaning it needs content
-    if ($("#main").text() === "")
-    { 
-        //first time loading the page then load homepage
-        loadContent("Home");
-        setupBtnsSensorSelect();
-    }
-    //load the slideshow if there is a div for it.  Call other needed functions to make it work.
-    var slideShow = $("#slideShow");
-    if (slideShow.text() === "")
-    {
-        $.get("/Main/LoadSlideShow", function (data) {
-            slideShow.html(data);
-            setupSlideShow();
-        }, 'html')
-            .fail(function () {
-                slideShow.html('<h3>Slide Show Unavailble</h3> <p>Please check with administrator</p>');
-            });
-    }
-    
+    //load the home page and slideshow then setup buttons
+    loadContent("Home");
+    loadSlideShow();
+    setupBtnsSensorSelect();
+    startUserTimer();
 });
 
 //load the sensor home content
 function loadContent(content) {
 
     $.get("/Main/LoadContent", { name: content },function (data) {
+
+        //load the html comming back from the get request into the #main div
         $("#main").html(data);
 
 
-        //check if it is the home page which does not need all the chart buttons
+        //Setup all the charting buttons for sensors (ie not == to home)
         if(content !== "Home")
         {
             
@@ -49,10 +35,7 @@ function loadContent(content) {
                     datasetLabel: "Default Dataset - error with Parse",
                     backgroundColor: "rgba(255,0,0,1)",
                     borderColor: "rgba(255,0,0,1)",
-                    labelString: "Default",
-                    xAxis: [],
-                    yAxis: [],
-                    globalChart: null
+                    labelString: "Default"
                 };
             }
 
@@ -62,14 +45,22 @@ function loadContent(content) {
             setupBtnsSensorScroll(); //setup the scroll buttons
             updateChart(); //draw the chart first time
         }
-        else { //loading the sensor home
-            startUserTimer();
-        }
-
-
     }, "html");
     //start the timer for user input
     
+}
+
+//load the slideshow content
+function loadSlideShow() {
+    var slideShow = $("#slideShow");
+
+    $.get("/Main/LoadSlideShow", function (data) {
+        slideShow.html(data);
+        setupSlideShow();
+    }, 'html')
+        .fail(function () {
+            slideShow.html('<h3>Slide Show Unavailble</h3> <p>Please check with administrator</p>');
+        });
 }
 
 //setup slideShow events

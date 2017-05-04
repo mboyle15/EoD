@@ -23,18 +23,24 @@
  *      package manager Migrations for database in the code first approach.  
  * 
  * *******************************************************************************************************************/
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 namespace EngineeringOnDisplay2017.Models
 {
-
     /**
      * Allows for loose connection with services in all aspects of MVC
      */
-    public class AppDbContext : DbContext
+    public class AppDbContext : IdentityDbContext<IdentityUser>
     {
-        //constructor needed to give superclass the options passed in from startup.cs  
-        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)  { }
+
+        private IConfigurationRoot _config;
+
+        public AppDbContext(IConfigurationRoot config, DbContextOptions options) : base(options)
+        {
+            _config = config;
+        }
 
         //db connection for the building records
         public DbSet<BuildingRecord> BuildingRecords { get; set; } 
@@ -52,5 +58,15 @@ namespace EngineeringOnDisplay2017.Models
         public DbSet<OutsideTempRecord> OutsideTempRecords { get; set; }
 
         public DbSet<Slide> Slides { get; set; }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            base.OnConfiguring(optionsBuilder);
+
+            optionsBuilder.UseSqlServer(_config["ConnectionStrings:LocalEoDConnection"]);
+        }
     }
+
+
+
 } 

@@ -18,21 +18,25 @@
  * College: University of Alaska, Anchorage
  * ***********************************************************************************************************************
  * File: AdminController.cs
- * Purpose: to run the home, about and contact views of the website.    
- * 
+ * Purpose: Single page application for controlling the admin side for Engineering on Display.
  * *******************************************************************************************************************/
-
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using EngineeringOnDisplay2017.Models;
+using System.Threading.Tasks;
 
 namespace EngineeringOnDisplay2017.Controllers
 {
     public class AdminController : Controller
     {
+        private IEodRepository _repository;
+
+        public AdminController(IEodRepository repository)
+        {
+            _repository = repository;
+        }
+
 
         //this is the Admin Page that will launch the other pages
         public IActionResult Index()
@@ -41,5 +45,25 @@ namespace EngineeringOnDisplay2017.Controllers
             return View();
         }
 
+        [Authorize]
+        public async Task<IActionResult> SlideShowManager()
+        {
+            return View(await _repository.GetSlidesAsync());
+        }
+
+        [Authorize]
+        public IActionResult UserManager()
+        {
+            return View();
+        }
+
+        [Authorize]
+        public IActionResult AddSlides()
+        {
+            return View();
+        }
+
+
+        
     }
 }

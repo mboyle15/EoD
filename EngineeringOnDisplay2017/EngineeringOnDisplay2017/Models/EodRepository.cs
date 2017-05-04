@@ -9,7 +9,7 @@ namespace EngineeringOnDisplay2017.Models
 {
     
 
-    public class GraphRepository : IGraphRepository
+    public class EodRepository : IEodRepository
     {
         //local copy of context
         private AppDbContext _appDbContext;
@@ -17,7 +17,7 @@ namespace EngineeringOnDisplay2017.Models
         /**
          * Constructor: gets a copy of the Context from dependancy injection.
          **/
-        public GraphRepository(AppDbContext context)
+        public EodRepository(AppDbContext context)
         {
             _appDbContext = context;
 
@@ -25,6 +25,14 @@ namespace EngineeringOnDisplay2017.Models
             //assume the queried building is the EIB.  Can be set later if user wants a different building
             Building = context.BuildingRecords.Where(b => b.Acronym == "EIB").FirstOrDefault();
         }
+
+
+        public async Task<IEnumerable<Slide>> GetSlidesAsync()
+        {
+            return await _appDbContext.Slides.ToListAsync();
+        }
+
+
 
         /**
         * Get all graph points in table for given sensor. According to the building, default EIB
@@ -595,7 +603,9 @@ namespace EngineeringOnDisplay2017.Models
             //return an empty 
             return Enumerable.Empty<ISensor>();
         }
-        
+
+      
+
         /**
          * Property for the building. Constructor assumes it will be set to EIB. Needs to be changed for different building 
          **/

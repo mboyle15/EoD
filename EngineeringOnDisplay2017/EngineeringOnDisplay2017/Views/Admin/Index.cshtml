@@ -1,46 +1,14 @@
-﻿
-<!DOCTYPE html>
-
-<html>
-<head>
-
-    <meta charset="utf-8" />
-
-    <link rel="stylesheet" href="~/lib/font-awesome/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
-
-
-    <title>Engineering on Display - @ViewBag.Title</title>
-</head>
-<body>
+﻿@{ 
+    Layout = "AdminLayout";
+}
 
 
 
 
-    <div id="sidebar">
-        <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Slide Show</a></li>
-        </ul>
+<div class="row">
+    <div class="col-md-12">
+        <h2>Welcome to Engineering on Display Admin Page</h2>
+        <p>Please Launch the application or select a menu item from the side bar.</p>
+        <a asp-controller="Main" asp-action="Index" class="btn btn-lg btn-success">Launch</a>
     </div>
-
-    <div id="main">
-        <a class="sensorNavBtn" asp-controller="Main" asp-action="Index" role="button">Launch Display</a>
-
-        <h2>Login</h2>
-        <form method="get" title="Login">
-            <label>UserName:</label>
-            <input name="username" type="text" value="Input username" />
-            <label>Password:</label>
-            <input name="password" type="password" value="input password" />
-        </form>
-    </div>
-
-
-    <script type="text/javascript" src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script type="text/javascript" src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="~/lib/moment/min/moment.min.js"></script>
-    <script type="text/javascript" src="~/lib/Chart-js/dist/Chart.min.js"></script>
-    <script type="text/javascript" src="~/js/site.js"></script>
-</body>
-</html>
+</div>
