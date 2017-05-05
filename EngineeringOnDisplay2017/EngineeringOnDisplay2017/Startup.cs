@@ -62,7 +62,8 @@ namespace EngineeringOnDisplay2017
                 //switch to Https for production
                 if (_env.IsProduction())
                 {
-                    config.Filters.Add(new RequireHttpsAttribute());
+                    //Only enable when TSL cert if ready for site
+                   // config.Filters.Add(new RequireHttpsAttribute());
                 }
             })
             .AddJsonOptions(config =>

@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+
+    <meta charset="utf-8" />
+
+    <link rel="stylesheet" href="~/lib/bootswatch/readable/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="~/css/admin.css" />
+
+
+    <title>Engineering on Display - @ViewBag.Title</title>
+</head>
+<body>
+    <div id="uaaHead"><img src="~/images/CollegeOfEngineering-GG-Rvrs.png" /></div>
+    <div class="row">
+        <div class="container-fluid">
+            <div class ="col-md-1" id="sidebar">
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <span id="username">@User.Identity.Name</span>
+                }
+                <ul class="navbar nav">
+                    <li><a asp-controller="Main" asp-action="Index">Launch App</a></li>
+                    <li><a asp-controller="Admin" asp-action="SlideShowManager">Slide Show</a></li>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li><a asp-controller="Auth" asp-action="logout">Logout</a></li>
+                    }
+                </ul>
+            </div>
+
+            <div class="col-md-offset-1 col-md-10" id="main">
+                <div class="row">
+                    <div class="container-fluid">
+                        <div class="col-md-2"> <img src="~/images/EIB-small.jpg" /></div>
+                        <div class="col-md-3"><h1>Engineering on Display</h1></div>
+                        <div class="col-md-2"><img style="width:100%; height:100%" src="~/images/Siemens.png" /></div>
+                    </div>
+                </div>
+                <hr style="border:1px solid black;" />
+
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    @RenderSection("scripts", false)
+    <script type="text/javascript" src="~/lib/moment/min/moment.min.js"></script>
+    <script type="text/javascript" src="~/lib/Chart-js/dist/Chart.min.js"></script>
+    <script type="text/javascript" src="~/js/admin.js"></script>
+</body>
+</html>
+
