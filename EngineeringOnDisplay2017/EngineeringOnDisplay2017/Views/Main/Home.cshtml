@@ -1,1 +1,83 @@
-﻿<h1>Sensor Home</h1>
+﻿<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style> 
+        .textMain {
+            font-family: Sans-serif;
+            font-size:x-large;
+        }
+        .textInstructionHead {
+            font-family: Sans-serif;
+            font-size: x-large;
+            color: #ffffff;
+            padding: 10px 10px 10px 10px;
+        }
+        .textInstructionBody {
+            font-family: Sans-serif;
+            font-size: large;
+            color: #ffffff;
+            padding: 10px 10px 10px 10px;
+        }
+        .square {
+            width: auto;
+            height: 300px;
+            border: 5px solid #FFC425;
+            border-radius: 25px;
+            background: #00583D;
+            outline-width: 5px;            
+        }
+    </style>
+</head>
+
+
+
+<div class="row">
+    <div class="container-fluid">
+        <div class="col-md-4"> <img src="~/images/EIB-small.jpg" /></div>
+        <div class="col-md-4"> <h1><b>Engineering on Display</b></h1></div>
+        <div class="col-md-4"><img style="width:50%; height:50%" src="~/images/Siemens.png" /></div>
+    </div>
+</div>
+<hr style="border:1px solid black;" />
+<div align="center">
+    <p class="textMain">
+        Welcome to the engineering on display (EoD) of UAA. This is a part of an effort to rasise
+        awarness and knowledge about the energy useage of even a single building in the modern world.
+        As part of a collaberative effor between UAA and Siemens this display gives you a view into
+        the quanitiy of electricity, natural gas and water that this building takes, as well as being
+        able to view the fluctuations in this over time.
+    </p>
+</div>
+
+<div class="row">
+    <div class="container-fluid">
+        <div class="col-md-4">
+            <div class="square">
+                <p class="textInstructionHead">step 1</p>
+                <p class="textInstructionBody">Select icon from side bar to display information desired</p>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="square">
+                <p class="textInstructionHead">step 2</p>
+                <p class="textInstructionBody">Select time period and usage/ demand to display graph <br/><br/>Usage - total amount since the building opened<br/>Demand - amount used at any one time</p>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="square">
+                <p class="textInstructionHead">step 3</p>
+                <p class="textInstructionBody">Scroll to see the graph change with time</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
