@@ -21,6 +21,7 @@
     <Content Include="wwwroot\js\main.min.js" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="6.1.1" />
     <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.0.0" />
     <PackageReference Include="Microsoft.AspNet.Identity.Core" Version="2.2.1" />
     <PackageReference Include="Microsoft.AspNetCore" Version="1.1.1" />
@@ -42,6 +43,7 @@
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="1.0.0" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="ApiModels\" />
     <Folder Include="Properties\PublishProfiles\" />
     <Folder Include="wwwroot\images\" />
   </ItemGroup>

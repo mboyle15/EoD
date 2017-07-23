@@ -10,6 +10,7 @@ using Microsoft.Extensions.Options;
 using Newtonsoft.Json.Serialization;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
+using EngineeringOnDisplay2017.ViewModels;
 
 namespace EngineeringOnDisplay2017
 {
@@ -76,6 +77,9 @@ namespace EngineeringOnDisplay2017
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, DbInitializer seeder, ILoggerFactory loggerFactory)
         {
+
+
+
             loggerFactory.AddConsole(_config.GetSection("Logging"));
             loggerFactory.AddDebug();
 
@@ -93,6 +97,14 @@ namespace EngineeringOnDisplay2017
             app.UseStaticFiles();
 
             app.UseIdentity();
+
+
+            //AutoMapper.Mapper.Initialize(cfg =>
+            //{
+            //    cfg.CreateMap<IdentityUser, UserForListViewModel>()
+            //    .ForMember(dest => dest.Username, opt => opt.MapFrom(src => src.UserName));
+            //});
+
 
             app.UseMvc(routes =>
             {
